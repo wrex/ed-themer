@@ -1,18 +1,43 @@
+<script>
+  import SurfaceColors from "../components/SurfaceColors.svelte";
+  import TextColors from "../components/TextColors.svelte";
+  import ItemTypeColors from "../components/ItemTypeColors.svelte";
+  import SrsStageColors from "../components/SrsStageColors.svelte";
+  import BrandColors from "../components/BrandColors.svelte";
+  import LessonReviewColors from "../components/LessonReviewColors.svelte";
+</script>
+
 <h1>Elementary Dark Themer</h1>
-<div class="pickers">
-  <label for="surface-1">--USER-surface-1</label>
-  <input type="color" name="surface-1" id="surface-1">
-  <label for="surface-2">--USER-surface-2</label>
-  <input type="color" name="surface-1" id="surface-1">
-  <label for="surface-3">--USER-surface-3</label>
-  <input type="color" name="surface-1" id="surface-1">
-  <label for="surface-4">--USER-surface-4</label>
-  <input type="color" name="surface-1" id="surface-1">
-  <label for="inverted-surface">--USER-inverted-surface</label>
-  <input type="color" name="inverted-surface" id="inverted-surface">
 
-</div>
+<details role="list">
+  <summary>Branding etc.</summary>
+  <BrandColors />
+</details>
 
+<details role="list">
+  <summary>Surfaces</summary>
+  <SurfaceColors />
+</details>
+
+<details role="list">
+  <summary>Text</summary>
+  <TextColors />
+</details>
+
+<details role="list">
+  <summary>Item types</summary>
+  <ItemTypeColors />
+</details>
+
+<details role="list">
+  <summary>SRS Stages</summary>
+  <SrsStageColors />
+</details>
+
+<details role="list">
+  <summary>Lessons & Reviews</summary>
+  <LessonReviewColors />
+</details>
 
 <style>
 </style>
