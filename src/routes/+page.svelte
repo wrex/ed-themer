@@ -7,37 +7,44 @@
   import LessonReviewColors from "../components/LessonReviewColors.svelte";
 </script>
 
-<h1>Elementary Dark Themer</h1>
+<aside id="user-colors">
+  <form>
+    <details>
+      <summary>Branding etc.</summary>
+      <BrandColors />
+    </details>
+    
+    <details>
+      <summary>Surfaces</summary>
+      <SurfaceColors />
+    </details>
+    
+    <details>
+      <summary>Text</summary>
+      <TextColors />
+    </details>
+    
+    <details>
+      <summary>Item types</summary>
+      <ItemTypeColors />
+    </details>
+    
+    <details>
+      <summary>SRS Stages</summary>
+      <SrsStageColors />
+    </details>
+    
+    <details>
+      <summary>Lessons & Reviews</summary>
+      <LessonReviewColors />
+    </details>
+  </form>
+</aside>
 
-<details role="list">
-  <summary>Branding etc.</summary>
-  <BrandColors />
-</details>
+<main id="samples">
+  <h1>Elementary Dark Themer</h1>
+</main>
 
-<details role="list">
-  <summary>Surfaces</summary>
-  <SurfaceColors />
-</details>
-
-<details role="list">
-  <summary>Text</summary>
-  <TextColors />
-</details>
-
-<details role="list">
-  <summary>Item types</summary>
-  <ItemTypeColors />
-</details>
-
-<details role="list">
-  <summary>SRS Stages</summary>
-  <SrsStageColors />
-</details>
-
-<details role="list">
-  <summary>Lessons & Reviews</summary>
-  <LessonReviewColors />
-</details>
-
-<style>
-</style>
+<footer id="palette">
+  <h1>Color Palette</h1>
+</footer>

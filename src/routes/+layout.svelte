@@ -3,4 +3,6 @@
   import '../app.css'
 </script>
 
-<slot />
+<div class="app-container">
+  <slot />
+</div>

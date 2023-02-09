@@ -1,0 +1,30 @@
+.app-container {
+	display: grid;
+	grid-template-columns: 12em 1fr;
+	grid-template-rows: 80vh 20vh;
+	grid-template-areas:
+		'user-colors samples'
+		'palette     palette';
+}
+
+.app-container > * {
+	padding: 1.5em;
+}
+
+#user-colors {
+	grid-area: user-colors;
+	overflow-y: scroll;
+}
+
+#user-colors label {
+	font-size: small;
+}
+
+#samples {
+	grid-area: samples;
+}
+
+#palette {
+	grid-area: palette;
+	overflow: scroll;
+}
