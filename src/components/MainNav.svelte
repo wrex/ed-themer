@@ -1,0 +1,9 @@
+<nav>
+  <ul>
+    <li><strong>Logo</strong></li>
+  </ul>
+  <ul>
+    <li>reset</li>
+    <li>load/save</li>
+  </ul>
+</nav>

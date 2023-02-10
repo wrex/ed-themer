@@ -5,7 +5,10 @@
   import SrsStageColors from "../components/SrsStageColors.svelte";
   import BrandColors from "../components/BrandColors.svelte";
   import LessonReviewColors from "../components/LessonReviewColors.svelte";
+  import MainNav from "../components/MainNav.svelte";
 </script>
+
+<MainNav />
 
 <aside id="user-colors">
   <form>

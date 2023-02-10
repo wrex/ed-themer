@@ -1,19 +1,27 @@
 .app-container {
 	display: grid;
+	min-height: 100vh;
 	grid-template-columns: 12em 1fr;
-	grid-template-rows: 80vh 20vh;
+	grid-template-rows: auto 3fr 1fr;
 	grid-template-areas:
+		'nav         nav'
 		'user-colors samples'
 		'palette     palette';
 }
 
 .app-container > * {
-	padding: 1.5em;
+	padding: 0.5em 1.5em;
+}
+
+.app-container > nav {
+	grid-area: nav;
+	border-bottom: 1px solid white;
 }
 
 #user-colors {
 	grid-area: user-colors;
 	overflow-y: scroll;
+	border-right: 1px solid white;
 }
 
 #user-colors label {
@@ -27,4 +35,5 @@
 #palette {
 	grid-area: palette;
 	overflow: scroll;
+	border-top: 1px solid white;
 }
