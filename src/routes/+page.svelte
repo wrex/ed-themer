@@ -10,11 +10,6 @@
 <aside id="user-colors">
   <form>
     <details>
-      <summary>Branding etc.</summary>
-      <BrandColors />
-    </details>
-    
-    <details>
       <summary>Surfaces</summary>
       <SurfaceColors />
     </details>
@@ -22,6 +17,11 @@
     <details>
       <summary>Text</summary>
       <TextColors />
+    </details>
+    
+    <details>
+      <summary>Branding etc.</summary>
+      <BrandColors />
     </details>
     
     <details>
