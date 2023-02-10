@@ -6,6 +6,25 @@
   import BrandColors from "../components/BrandColors.svelte";
   import LessonReviewColors from "../components/LessonReviewColors.svelte";
   import MainNav from "../components/MainNav.svelte";
+  import Samples from "../components/Samples.svelte";
+
+  import { userProps } from '$lib/userPropStore.js';
+
+  // $: styleString = Object.keys($userProps).reduce(
+  //   (acc, cur) => acc + `${cur}: ${$userProps[cur]}; `, ""
+  // );
+
+ $: styleString = `
+  --USER-surface-1: ${$userProps['--USER-surface-1']};
+  --USER-surface-2: ${$userProps['--USER-surface-2']};
+  --USER-surface-3: ${$userProps['--USER-surface-3']};
+  --USER-surface-4: ${$userProps['--USER-surface-4']};
+  --USER-inverted-surface: ${$userProps['--USER-inverted-surface']};
+  --USER-text-clr: ${$userProps['--USER-text-clr']};
+  --USER-inverted-text: ${$userProps['--USER-inverted-text']};
+  --USER-highlight-text: ${$userProps['--USER-highlight-text']};
+  --USER-grayed-text: ${$userProps['--USER-grayed-text']};
+  `;
 </script>
 
 <MainNav />
@@ -44,8 +63,8 @@
   </form>
 </aside>
 
-<main id="samples">
-  <h1>Elementary Dark Themer</h1>
+<main id="samples" style={styleString}>
+  <Samples /> 
 </main>
 
 <footer id="palette">

@@ -1,6 +1,6 @@
 .app-container {
 	display: grid;
-	min-height: 100vh;
+	height: 100vh;
 	grid-template-columns: 12em 1fr;
 	grid-template-rows: auto 3fr 1fr;
 	grid-template-areas:
@@ -29,6 +29,7 @@
 }
 
 #samples {
+	padding: 0;
 	grid-area: samples;
 }
 
