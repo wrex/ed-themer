@@ -1,11 +1,6 @@
 <script>
-  import SurfaceColors from "../components/SurfaceColors.svelte";
-  import TextColors from "../components/TextColors.svelte";
-  import ItemTypeColors from "../components/ItemTypeColors.svelte";
-  import SrsStageColors from "../components/SrsStageColors.svelte";
-  import BrandColors from "../components/BrandColors.svelte";
-  import LessonReviewColors from "../components/LessonReviewColors.svelte";
   import MainNav from "../components/MainNav.svelte";
+  import ColorPropNav from "../components/ColorPropNav.svelte";
   import Surfaces from "../components/Surfaces.svelte";
   import Dashboard from "../components/Dashboard.svelte";
   import Review from "../components/Review.svelte";
@@ -34,39 +29,8 @@
 
 <MainNav />
 
-<aside id="user-colors">
-  <form>
-    <details>
-      <summary>Surfaces</summary>
-      <SurfaceColors />
-    </details>
-    
-    <details>
-      <summary>Text</summary>
-      <TextColors />
-    </details>
-    
-    <details>
-      <summary>Branding etc.</summary>
-      <BrandColors />
-    </details>
-    
-    <details>
-      <summary>Item types</summary>
-      <ItemTypeColors />
-    </details>
-    
-    <details>
-      <summary>SRS Stages</summary>
-      <SrsStageColors />
-    </details>
-    
-    <details>
-      <summary>Lessons & Reviews</summary>
-      <LessonReviewColors />
-    </details>
-  </form>
-</aside>
+<ColorPropNav />
+
 
 <main id="samples" style={styleString}>
   {#if $sample === "surfaces"}
