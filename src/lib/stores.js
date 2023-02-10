@@ -31,3 +31,5 @@ export const defaultProps = {
 };
 
 export const userProps = writable(defaultProps);
+
+export const sample = writable('surfaces');

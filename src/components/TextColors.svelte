@@ -1,5 +1,5 @@
 <script>
-  import {userProps} from '$lib/userPropStore.js';
+  import {userProps} from '$lib/stores.js';
 </script>
 
 <label for="text-clr">text-clr</label>
