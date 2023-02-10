@@ -6,7 +6,7 @@
   import BrandColors from "../components/BrandColors.svelte";
   import LessonReviewColors from "../components/LessonReviewColors.svelte";
   import MainNav from "../components/MainNav.svelte";
-  import Samples from "../components/Samples.svelte";
+  import Surfaces from "../components/Surfaces.svelte";
 
   import { userProps } from '$lib/userPropStore.js';
 
@@ -64,7 +64,7 @@
 </aside>
 
 <main id="samples" style={styleString}>
-  <Samples /> 
+  <Surfaces /> 
 </main>
 
 <footer id="palette">
