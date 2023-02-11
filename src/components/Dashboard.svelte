@@ -763,7 +763,8 @@
   }
 
   .pip {
-    height: 10px;
+    height: 5px;
+    width: 7px;
     background-color: var(--USER-inverted-surface);
   }
 
