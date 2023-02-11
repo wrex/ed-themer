@@ -666,6 +666,11 @@
     width: 100%;
   }
 
+  .extra-study h1,
+  .extra-study p {
+    color: var(--USER-text-clr);
+  }
+
   .extra-study img {
     object-fit: scale-down;
   }
@@ -715,6 +720,10 @@
     background-color: var(--USER-surface-3);
     padding: 12px;
     margin-block: 12px;
+  }
+
+  .dashboard-progress * {
+    color: var(--USER-text-clr);
   }
 
   .radical-progress h2,
@@ -783,6 +792,10 @@
     grid-column: 5 / span 2;
     grid-row: 1 / 4;
     padding-inline: 12px;
+  }
+
+  .review-forecast * {
+    color: var(--USER-text-clr);
   }
 
   .today,
@@ -877,6 +890,10 @@
     gap: 5px;
   }
 
+  .srs-progress * {
+    color: var(--USER-text-clr);
+  }
+
   .srs {
     display: inline-block;
     width: 100vw;
@@ -921,6 +938,10 @@
     grid-template-columns: repeat(6, 1fr);
     gap: 30px 20px;
     margin-block: 80px;
+  }
+
+  .kotoba-table * {
+    color: var(--USER-text-clr);
   }
 
   .kotoba-table .span2 {
