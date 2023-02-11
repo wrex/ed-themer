@@ -24,6 +24,24 @@
   --USER-inverted-text: ${$userProps['--USER-inverted-text']};
   --USER-highlight-text: ${$userProps['--USER-highlight-text']};
   --USER-grayed-text: ${$userProps['--USER-grayed-text']};
+  --USER-brand: ${$userProps['--USER-brand']};
+  --USER-progress-clr: ${$userProps['--USER-progress-clr']};
+  --USER-success: ${$userProps['--USER-success']};
+  --USER-alert: ${$userProps['--USER-alert']};
+  --USER-radical-clr: ${$userProps['--USER-radical-clr']};
+  --USER-kanji-clr: ${$userProps['--USER-kanji-clr']};
+  --USER-vocab-clr: ${$userProps['--USER-vocab-clr']};
+  --USER-apprentice-clr: ${$userProps['--USER-apprentice-clr']};
+  --USER-guru-clr: ${$userProps['--USER-guru-clr']};
+  --USER-master-clr: ${$userProps['--USER-master-clr']};
+  --USER-enlightened-clr: ${$userProps['--USER-enlightened-clr']};
+  --USER-burned-clr: ${$userProps['--USER-burned-clr']};
+  --USER-lesson-clr: ${$userProps['--USER-lesson-clr']};
+  --USER-review-clr: ${$userProps['--USER-review-clr']};
+  --USER-correct: ${$userProps['--USER-correct']};
+  --USER-incorrect: ${$userProps['--USER-incorrect']};
+  --USER-meaning-clr: ${$userProps['--USER-meaning-clr']};
+  --USER-reading-clr: ${$userProps['--USER-reading-clr']};
   `;
 </script>
 
@@ -51,3 +69,10 @@
 <footer id="palette">
   <h1>Color Palette</h1>
 </footer>
+
+<style>
+  #samples {
+    min-width: 1024px;
+    overflow: scroll;
+  }
+</style>

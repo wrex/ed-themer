@@ -1,9 +1,11 @@
 <script>
   import {sample} from '$lib/stores.js';
+  import Export from '../icons/Export.svelte';
+  import Reload from '../icons/Reload.svelte';
 </script>
 <nav>
   <ul>
-    <li><strong>Logo</strong></li>
+    <li><strong>鰐蟹ED</strong></li>
   </ul>
   <ul>
     <li>
@@ -16,7 +18,7 @@
           <option value="lesson-summary">Lesson Summary</option>
         </select>
     </li>
-    <li>reset</li>
-    <li>load/save</li>
+    <li><a href="#" role="button"><Reload /></a></li>
+    <li><a href="#" role="button"><Export /></a></li>
   </ul>
 </nav>
