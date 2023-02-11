@@ -73,6 +73,6 @@
 <style>
   #samples {
     min-width: 1024px;
-    overflow: scroll;
+    overflow-y: scroll;
   }
 </style>

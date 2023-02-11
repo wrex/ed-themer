@@ -202,6 +202,29 @@
       </div>
     </div>
   </div>
+  <section class="srs-progress">
+    <div class="srs apprentice">
+      <h2>151</h2>
+      <p>Apprentice</p>
+    </div>
+    <div class="srs guru">
+      <h2>588</h2>
+      <p>Guru</p>
+    </div>
+    <div class="srs master">
+      <h2>520</h2>
+      <p>Master</p>
+    </div>
+    <div class="srs enlightened">
+      <h2>1216</h2>
+      <p>Englightened</p>
+    </div>
+    <div class="srs burned">
+      <h2>6530</h2>
+      <p>Burned</p>
+    </div>
+  </section>
+
 </div>
 
 <style>
@@ -464,7 +487,6 @@
     line-height: 2;
     font-size: 12px;
   }
-
   .today-row .time {
     width: 100px;
   }
@@ -513,4 +535,51 @@
   .brand-fg {
     color: var(--USER-brand);
   }
+
+  .srs-progress {
+    width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+  }
+
+  .srs {
+    display: inline-block;
+    width: 100vw;
+
+    padding: 30px 22.5px 22.5px;
+    text-align: center;
+    border-radius: 5px;
+    margin: 12px 1px;
+  }
+
+  .srs h2 {
+    font-size: 30px;
+    margin-bottom: 0px;
+  }
+
+  .srs p {
+    margin-bottom: 12px;
+  }
+
+  .apprentice {
+    background-color: var(--USER-apprentice-clr);
+  }
+
+  .guru {
+    background-color: var(--USER-guru-clr);
+  }
+
+  .master {
+    background-color: var(--USER-master-clr);
+  }
+
+  .enlightened {
+    background-color: var(--USER-enlightened-clr);
+  }
+
+  .burned {
+    background-color: var(--USER-burned-clr);
+  }
+
 </style>
