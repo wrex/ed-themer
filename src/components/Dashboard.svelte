@@ -115,6 +115,92 @@
         </div>
       </div>
     </div>
+    <div class="review-forecast">
+      <h2>Review Forecast</h2>
+      <div class="week-forecast">
+        <div class="today">
+          <h3><span class="brand-fg">^</span> Today</h3>
+          <div class="today-row">
+            <div class="time">3 pm</div>
+            <div class="bar-container">
+              <div class="bar bar-30">&nbsp;</div>
+            </div>
+            <div class="incr"><span class="grayed">+</span>11</div>
+            <div class="total">110</div>
+          </div>
+          <div class="today-row">
+            <div class="time">4 pm</div>
+            <div class="bar-container">
+              <div class="bar bar-20">&nbsp;</div>
+            </div>
+            <div class="incr"><span class="grayed">+</span>10</div>
+            <div class="total">120</div>
+          </div>
+          <div class="today-row">
+            <div class="time">5 pm</div>
+            <div class="bar-container">
+              <div class="bar bar-50">&nbsp;</div>
+            </div>
+            <div class="incr"><span class="grayed">+</span>16</div>
+            <div class="total">136</div>
+          </div>
+          <div class="today-row">
+            <div class="time">6 pm</div>
+            <div class="bar-container">
+              <div class="bar bar-20">&nbsp;</div>
+            </div>
+            <div class="incr"><span class="grayed">+</span>1</div>
+            <div class="total">137</div>
+          </div>
+          <div class="today-row">
+            <div class="time">7 pm</div>
+            <div class="bar-container">
+              <div class="bar bar-50">&nbsp;</div>
+            </div>
+            <div class="incr"><span class="grayed">+</span>27</div>
+            <div class="total">164</div>
+          </div>
+        </div>
+        <div class="otherday">
+          <h3>
+            <span class="brand-fg">v</span> Thursday
+            <span class="right"
+              ><span class="grayed">+</span>116 | 280</span
+            >
+          </h3>
+        </div>
+        <div class="otherday">
+          <h3>
+            <span class="brand-fg">v</span> Friday
+            <span class="right"><span class="grayed">+</span>78 | 358</span>
+          </h3>
+        </div>
+        <div class="otherday">
+          <h3>
+            <span class="brand-fg">v</span> Saturday
+            <span class="right"><span class="grayed">+</span>65 | 423</span>
+          </h3>
+        </div>
+        <div class="otherday">
+          <h3>
+            <span class="brand-fg">v</span> Sunday
+            <span class="right"><span class="grayed">+</span>83 | 506</span>
+          </h3>
+        </div>
+        <div class="otherday">
+          <h3>
+            <span class="brand-fg">v</span> Monday
+            <span class="right"><span class="grayed">+</span>89 | 595</span>
+          </h3>
+        </div>
+        <div class="otherday">
+          <h3>
+            <span class="brand-fg">v</span> Tuesday
+            <span class="right"><span class="grayed">+</span>88 | 683</span>
+          </h3>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -333,5 +419,98 @@
 
   .locked {
     background-color: var(--USER-surface-4);
+  }
+
+  .review-forecast {
+    background-color: var(--USER-surface-2);
+    grid-column: 5 / span 2;
+    grid-row: 1 / 4;
+    padding-inline: 12px;
+  }
+
+  .today,
+  .otherday {
+    background-color: var(--USER-surface-3);
+    margin-bottom: 12px;
+    padding-inline: 12px;
+  }
+
+  .today {
+    padding-block: 12px;
+  }
+
+  .today h3,
+  .otherday h3 {
+    display: inline-block;
+    min-width: 100%;
+    font-size: 14px;
+  }
+
+  .today h3 {
+    border-bottom: 1px solid var(--USER-text-light);
+  }
+
+  .right {
+    float: right;
+  }
+
+  .today h3,
+  .otherday h3 {
+    font-weight: normal;
+  }
+
+  .today-row {
+    display: flex;
+    line-height: 2;
+    font-size: 12px;
+  }
+
+  .today-row .time {
+    width: 100px;
+  }
+
+  .today-row .bar-container {
+    width: 300px;
+    font-size: 1px;
+    border-left: 1px solid var(--USER-text-light);
+    padding-block: 8px;
+  }
+
+  .today-row .bar {
+    border-top-right-radius: 36px;
+    border-bottom-right-radius: 36px;
+  }
+
+  .today-row .incr {
+    width: 100px;
+    text-align: right;
+    padding-inline: 12px;
+  }
+
+  .today-row .total {
+    padding-inline: 12px;
+    border-left: 1px solid var(--USER-text-light);
+  }
+
+  .bar-20 {
+    background-color: var(--USER-brand);
+    height: 100%;
+    width: 20%;
+  }
+
+  .bar-30 {
+    background-color: var(--USER-brand);
+    height: 100%;
+    width: 30%;
+  }
+
+  .bar-50 {
+    background-color: var(--USER-brand);
+    height: 100%;
+    width: 50%;
+  }
+
+  .brand-fg {
+    color: var(--USER-brand);
   }
 </style>
