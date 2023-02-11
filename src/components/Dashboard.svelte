@@ -951,7 +951,6 @@
   .kotoba-table-list table a,
   .kotoba-table-list table a:hover {
     display: block;
-    padding: 0.7em 1em;
     color: var(--USER-text-clr);
     text-decoration: none;
   }
