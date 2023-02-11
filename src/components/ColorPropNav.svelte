@@ -20,22 +20,22 @@
     </details>
     
     <details>
-      <summary>Branding etc.</summary>
+      <summary>Brand</summary>
       <BrandColors />
     </details>
     
     <details>
-      <summary>Item types</summary>
+      <summary>Types</summary>
       <ItemTypeColors />
     </details>
     
     <details>
-      <summary>SRS Stages</summary>
+      <summary>SRS</summary>
       <SrsStageColors />
     </details>
     
     <details>
-      <summary>Lessons & Reviews</summary>
+      <summary>Reviews</summary>
       <LessonReviewColors />
     </details>
   </form>

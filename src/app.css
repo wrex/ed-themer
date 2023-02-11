@@ -1,7 +1,7 @@
 .app-container {
 	display: grid;
 	height: 100vh;
-	grid-template-columns: 12em 1fr;
+	grid-template-columns: 8em 1fr;
 	grid-template-rows: auto 3fr 1fr;
 	grid-template-areas:
 		'nav         nav'
@@ -22,7 +22,7 @@
 	grid-area: user-colors;
 	overflow-y: scroll;
 	border-right: 1px solid white;
-	padding-block: 2em;
+	padding: 2em 0.5em;
 }
 
 #user-colors label {
