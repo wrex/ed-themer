@@ -30,6 +30,8 @@ export const defaultProps = {
 	'--USER-reading-clr': '#282828'
 };
 
-export const userProps = writable(defaultProps);
+export const userProps = writable(Object.create(defaultProps));
+
+export const resetProps = () => userProps.set(Object.create(defaultProps));
 
 export const sample = writable('surfaces');
