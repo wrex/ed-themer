@@ -2,6 +2,7 @@
   import {sample, userProps, resetProps} from '$lib/stores.js';
   import ExportIcon from '../icons/ExportIcon.svelte';
   import ReloadIcon from '../icons/ReloadIcon.svelte';
+  import Logo from './Logo.svelte';
 
   
   $: userOverrides = `:root {
@@ -46,7 +47,7 @@ const copyToClipboard = () => {
 </script>
 <nav>
   <ul>
-    <li><strong>鰐蟹ED</strong></li>
+    <li><Logo /></li>
   </ul>
   <ul>
     <li>
