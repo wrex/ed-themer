@@ -4,7 +4,7 @@
   import ReloadIcon from '../icons/ReloadIcon.svelte';
 
   
-  const userOverrides = `:root {
+  $: userOverrides = `:root {
   --USER-surface-1: ${$userProps['--USER-surface-1']};
   --USER-surface-2: ${$userProps['--USER-surface-2']};
   --USER-surface-3: ${$userProps['--USER-surface-3']};
