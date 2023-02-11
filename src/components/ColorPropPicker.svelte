@@ -21,8 +21,8 @@
 
 </script>
 
-<label for={id}>{id}</label>
-<div class="controls">
+<article>
+  <header><label for={id}>{id}</label></header>
   <input type="color" name={id} id={id} bind:value={$userProps[`--USER-${id}`]}
   on:change={() => selected = ""}>
   <select bind:value={selected} on:change={handleChange}>
@@ -31,11 +31,14 @@
     <option>{name}</option>
     {/each}
   </select>
-</div>
+</article>
 
 <style>
-  .controls {
-    padding-left: 1em;
+  article {
+    --block-spacing-vertical: 0.5em;
+    --block-spacing-horizontal: 0.5em;
+    --spacing: 0.5em;
+    line-height: 1;
   }
   input {
     margin-bottom: 0;
