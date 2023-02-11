@@ -1,7 +1,7 @@
 .app-container {
 	display: grid;
 	height: 100vh;
-	grid-template-columns: 8em 1fr;
+	grid-template-columns: 12em 1fr;
 	grid-template-rows: auto 3fr 1fr;
 	grid-template-areas:
 		'nav         nav'
@@ -27,6 +27,7 @@
 
 #user-colors label {
 	font-size: small;
+	text-align: center;
 }
 
 #samples {

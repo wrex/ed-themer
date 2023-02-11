@@ -1,42 +1,51 @@
 <script>
-  import SurfaceColors from "../components/SurfaceColors.svelte";
-  import TextColors from "../components/TextColors.svelte";
-  import ItemTypeColors from "../components/ItemTypeColors.svelte";
-  import SrsStageColors from "../components/SrsStageColors.svelte";
-  import BrandColors from "../components/BrandColors.svelte";
-  import LessonReviewColors from "../components/LessonReviewColors.svelte";
+  import ColorPropPicker from "./ColorPropPicker.svelte";
+
+  import {surfaceNames, textNames, brandNames, typeNames, srsNames, reviewNames} from '$lib/utils';
 </script>
 
 <aside id="user-colors">
   <form>
     <details>
       <summary>Surfaces</summary>
-      <SurfaceColors />
+      {#each surfaceNames as name}
+        <ColorPropPicker id={name} />
+      {/each}
     </details>
     
     <details>
       <summary>Text</summary>
-      <TextColors />
+      {#each textNames as name}
+        <ColorPropPicker id={name} />
+      {/each}
     </details>
     
     <details>
       <summary>Brand</summary>
-      <BrandColors />
+      {#each brandNames as name}
+        <ColorPropPicker id={name} />
+      {/each}
     </details>
     
     <details>
       <summary>Types</summary>
-      <ItemTypeColors />
+      {#each typeNames as name}
+        <ColorPropPicker id={name} />
+      {/each}
     </details>
     
     <details>
       <summary>SRS</summary>
-      <SrsStageColors />
+      {#each srsNames as name}
+        <ColorPropPicker id={name} />
+      {/each}
     </details>
     
     <details>
       <summary>Reviews</summary>
-      <LessonReviewColors />
+      {#each reviewNames as name}
+        <ColorPropPicker id={name} />
+      {/each}
     </details>
   </form>
 </aside>
