@@ -74,5 +74,6 @@
   #samples {
     min-width: 1024px;
     overflow-y: scroll;
+    background-color: var(--USER-surface-1);
   }
 </style>
