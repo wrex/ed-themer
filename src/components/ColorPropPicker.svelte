@@ -5,17 +5,21 @@
   export let id;
 
   import {allPropNames} from '$lib/utils';
-  import {userProps} from '$lib/stores';
+  import {userProps, resetCallbacks} from '$lib/stores';
 
   /**
    * @type string;
    */
   let selected;
 
+  /* If user reloads defaults, set select to "Custom" */
+  resetCallbacks.push(() => {
+    selected = "";
+  });
+
   const handleChange = () => {
-    if (allPropNames.includes(selected)) {
-      $userProps[`--USER-${id}`] = $userProps[`--USER-${selected}`];
-    }
+    $userProps.clr[`--USER-${id}`] = $userProps.clr[`--USER-${selected}`];
+    $userProps.clrRef[`--USER-${id}`] = `--USER-${selected}`;
   }
 
 
@@ -23,7 +27,7 @@
 
 <article>
   <header><label for={id}>{id}</label></header>
-  <input type="color" name={id} id={id} bind:value={$userProps[`--USER-${id}`]}
+  <input type="color" name={id} id={id} bind:value={$userProps.clr[`--USER-${id}`]}
   on:change={() => selected = ""}>
   <select bind:value={selected} on:change={handleChange}>
     <option value="" disabled selected>Custom</option>
