@@ -10,7 +10,7 @@
 }
 
 .app-container > * {
-	padding: 0.5em 1.5em;
+	padding: 0 1.5em;
 }
 
 .app-container > nav {
@@ -48,6 +48,6 @@
 
 #palette {
 	grid-area: palette;
-	overflow: scroll;
+	overflow-y: scroll;
 	border-top: 1px solid white;
 }

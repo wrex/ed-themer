@@ -1,4 +1,4 @@
-<div class="container">
+<div class="dash">
   <div class="progress-and-forecast">
     <div class="lessons-and-reviews">
       <ul>
@@ -561,9 +561,8 @@
 </div>
 
 <style>
-  .container {
-    min-width: 1170px;
-    margin: 40px auto;
+  .dash {
+    padding: 2em;
     background-color: var(--USER-surface-1);
   }
 

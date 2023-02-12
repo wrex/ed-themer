@@ -7,7 +7,7 @@
   import Lesson from "../components/Lesson.svelte";
   import ReviewSummary from "../components/ReviewSummary.svelte";
   import LessonSummary from "../components/LessonSummary.svelte";
-  import PaletteBar from "../components/PaletteBar.svelte";
+  import Palette from "../components/Palette.svelte";
 
   import { userProps, sample } from '$lib/stores.js';
 
@@ -64,5 +64,5 @@
 </main>
 
 <footer id="palette">
-  <PaletteBar />
+  <Palette />
 </footer>
