@@ -10,12 +10,10 @@
 
 <div class="palette">
   <div class="bars">
-    <nav>
-      <ul>
-        <li><button on:click={incr}>+</button></li>
-        <li><button on:click={decr}>-</button></li>
-      </ul>
-    </nav>
+    <div class="incrdecr">
+      <span role="button" on:click={incr}>+</span>
+      <span role="button" on:click={decr}>-</span>
+    </div>
     <div class="swatches">
       <header>Click center swatch to change color</header>
       {#each Array(numBars) as i}
@@ -38,10 +36,10 @@
       "buttons swatches";
   }
 
-  .bars nav {
+  .bars .incrdecr {
     align-self: start;
     grid-area: buttons;
-    padding: 0 1em 0 0;
+    padding: 1.5em 1em 0 0;
   }
 
   .swatches {
