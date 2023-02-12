@@ -39,11 +39,8 @@
     <li>
         <select bind:value={$sample}>
           <option value="surfaces" selected>Surfaces</option>
+          <option value="reviews">Reviews</option>
           <option value="dashboard">Dashboard</option>
-          <option value="review">Review</option>
-          <option value="lesson">Lesson</option>
-          <option value="review-summary">Review Summary</option>
-          <option value="lesson-summary">Lesson Summary</option>
         </select>
     </li>
     <li><button class="iconButton" on:click={resetProps}><ReloadIcon /></button></li>

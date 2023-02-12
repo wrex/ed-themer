@@ -4,9 +4,6 @@
   import Surfaces from "../components/Surfaces.svelte";
   import Dashboard from "../components/Dashboard.svelte";
   import Review from "../components/Review.svelte";
-  import Lesson from "../components/Lesson.svelte";
-  import ReviewSummary from "../components/ReviewSummary.svelte";
-  import LessonSummary from "../components/LessonSummary.svelte";
   import Palette from "../components/Palette.svelte";
 
   import { userProps, sample } from '$lib/stores.js';
@@ -50,16 +47,10 @@
 <main id="samples" style={styleString}>
   {#if $sample === "surfaces"}
   <Surfaces /> 
+  {:else if $sample === "reviews"}
+  <Review />
   {:else if $sample === "dashboard"}
   <Dashboard />
-  {:else if $sample === "review"}
-  <Review />
-  {:else if $sample === "lesson"}
-  <Lesson />
-  {:else if $sample === "review-summary"}
-  <ReviewSummary />
-  {:else if $sample === "lesson-summary"}
-  <LessonSummary />
   {/if}
 </main>
 
