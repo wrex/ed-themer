@@ -672,6 +672,7 @@
 
   .extra-study img {
     object-fit: scale-down;
+    filter: invert(0.8);
   }
 
   .extra-study-block {

@@ -17,12 +17,26 @@
     selected = "";
   });
 
-  const handleChange = () => {
+  const pickerChange = () => {
+    selected = "";
+    let thisPropName = `--USER-${id}`;
+    let thisColor = $userProps.clr[thisPropName];
+
+    $userProps.clrRef[thisPropName] = "Custom";
+
+    /* update any other pickers referencing this one */
+    const refs = Object.keys($userProps.clrRef).filter(
+      key => $userProps.clrRef[key] === thisPropName
+    );
+    refs.forEach(ref => {
+      $userProps.clr[ref] = thisColor;
+    });
+  }
+
+  const selectorChange = () => {
     $userProps.clr[`--USER-${id}`] = $userProps.clr[`--USER-${selected}`];
     $userProps.clrRef[`--USER-${id}`] = `--USER-${selected}`;
   }
-
-
 </script>
 
 <article>
@@ -32,12 +46,9 @@
     name={id} 
     id={id} 
     bind:value={$userProps.clr[`--USER-${id}`]}
-    on:change={() => {
-      selected = "";
-      $userProps.clrRef[`--USER-${id}`] = "Custom";
-    }}
+    on:change={pickerChange}
   >
-  <select bind:value={selected} on:change={handleChange}>
+  <select bind:value={selected} on:change={selectorChange}>
     <option value="" disabled selected>Custom</option>
     {#each allPropNames.filter(name => name !== id) as name}
     <option>{name}</option>
