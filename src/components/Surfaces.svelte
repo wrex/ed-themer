@@ -32,7 +32,8 @@
     height: 100%;
     background-color: var(--USER-surface-1);
     color: var(--USER-text-clr);
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     padding: 2em;
   }
 
