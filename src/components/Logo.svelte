@@ -1,6 +1,6 @@
 <div class="logo">
-  <div class="row">鰐蟹</div>
-  <div class="row"><div class="rowitem">E</div><div class="rowitem">D</div></div>
+  <div class="row">鰐蟹ED</div>
+  <div class="row"><a class="secondary" href="/">Themer</a></div>
 </div>
 
 <style>
@@ -14,5 +14,10 @@
     font-size: 1.2rem;
     display: flex;
     justify-content: space-between;
+  }
+
+  .row .secondary {
+    font-weight: regular;
+    font-size: 1rem;
   }
 </style>
