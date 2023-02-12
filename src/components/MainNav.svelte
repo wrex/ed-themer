@@ -46,8 +46,8 @@
           <option value="lesson-summary">Lesson Summary</option>
         </select>
     </li>
-    <li><button on:click={resetProps}><ReloadIcon /></button></li>
-    <li><button on:click={toggleModal}><ExportIcon /></button></li>
+    <li><button class="iconButton" on:click={resetProps}><ReloadIcon /></button></li>
+    <li><button class="iconButton" on:click={toggleModal}><ExportIcon /></button></li>
   </ul>
 </nav>
 

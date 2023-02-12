@@ -7,6 +7,7 @@
   import Lesson from "../components/Lesson.svelte";
   import ReviewSummary from "../components/ReviewSummary.svelte";
   import LessonSummary from "../components/LessonSummary.svelte";
+  import PaletteBar from "../components/PaletteBar.svelte";
 
   import { userProps, sample } from '$lib/stores.js';
 
@@ -63,13 +64,5 @@
 </main>
 
 <footer id="palette">
-  <h1>Color Palette</h1>
+  <PaletteBar />
 </footer>
-
-<style>
-  #samples {
-    min-width: 1024px;
-    overflow-y: scroll;
-    background-color: var(--USER-surface-1);
-  }
-</style>

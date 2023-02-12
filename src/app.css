@@ -18,6 +18,13 @@
 	border-bottom: 1px solid white;
 }
 
+.iconButton {
+	font-size: xx-large;
+	line-height: 1;
+	margin: 0;
+	padding: 12px;
+}
+
 #user-colors {
 	grid-area: user-colors;
 	overflow-y: scroll;
@@ -34,6 +41,9 @@
 #samples {
 	padding: 0;
 	grid-area: samples;
+	min-width: 1024px;
+	overflow-y: scroll;
+	background-color: var(--USER-surface-1);
 }
 
 #palette {
