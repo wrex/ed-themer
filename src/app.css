@@ -1,8 +1,8 @@
 .app-container {
 	display: grid;
 	height: 100vh;
-	grid-template-columns: 12em 1fr;
-	grid-template-rows: auto 3fr 1fr;
+	grid-template-columns: auto 1fr;
+	grid-template-rows: auto 3fr max(auto, 225px);
 	grid-template-areas:
 		'nav         nav'
 		'user-colors samples'

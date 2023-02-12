@@ -76,3 +76,5 @@ export const resetProps = () => {
 };
 
 export const sample = writable('surfaces');
+
+export const sidebarExpanded = writable(true);
