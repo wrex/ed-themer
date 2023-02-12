@@ -27,8 +27,16 @@
 
 <article>
   <header><label for={id}>{id}</label></header>
-  <input type="color" name={id} id={id} bind:value={$userProps.clr[`--USER-${id}`]}
-  on:change={() => selected = ""}>
+  <input 
+    type="color" 
+    name={id} 
+    id={id} 
+    bind:value={$userProps.clr[`--USER-${id}`]}
+    on:change={() => {
+      selected = "";
+      $userProps.clrRef[`--USER-${id}`] = "Custom";
+    }}
+  >
   <select bind:value={selected} on:change={handleChange}>
     <option value="" disabled selected>Custom</option>
     {#each allPropNames.filter(name => name !== id) as name}

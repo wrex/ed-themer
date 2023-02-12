@@ -10,8 +10,8 @@ export const allPropNames = [
 	'grayed-text',
 	'brand',
 	'progress-clr',
-	'success-clr',
-	'alert-clr',
+	'success',
+	'alert',
 	'radical-clr',
 	'kanji-clr',
 	'vocab-clr',
@@ -38,7 +38,7 @@ export const surfaceNames = [
 
 export const textNames = ['text-clr', 'inverted-text', 'highlight-text', 'grayed-text'];
 
-export const brandNames = ['brand', 'progress-clr', 'success-clr', 'alert-clr'];
+export const brandNames = ['brand', 'progress-clr', 'success', 'alert'];
 
 export const typeNames = ['radical-clr', 'kanji-clr', 'vocab-clr'];
 
