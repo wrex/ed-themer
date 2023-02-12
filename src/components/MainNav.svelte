@@ -6,7 +6,6 @@
   import {allPropNames} from '$lib/utils';
 
   const makeCssRule = (obj) => {
-    console.log(obj.clrRef['--USER-surface-1']);
     let retval = ":root {\r\n";
     allPropNames.forEach(name => {
       if (obj.clrRef[`--USER-${name}`] === "Custom") {
