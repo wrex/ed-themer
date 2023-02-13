@@ -1,7 +1,6 @@
 <script>
-	export let id = 'foo';
-	export let swatchObj = { clr: '#888888', label: 'grays' };
-	let baseClr = swatchObj.clr;
+	export let id = 'grays';
+	export let baseClr = '#888888';
 
 	import { tint, shade } from '$lib/utils';
 
