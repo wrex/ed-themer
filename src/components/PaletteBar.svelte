@@ -23,7 +23,7 @@
   `;
 </script>
 
-<div class="container" style={customProps}>
+<div class="swatchbar" style={customProps}>
 	<div class="swatch s91" />
 	<div class="swatch s78" />
 	<div class="swatch s65" />
@@ -42,13 +42,12 @@
 </div>
 
 <style>
-	.container {
-		padding: 0.25em 0;
+	.swatchbar {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 	}
-	.container > input {
+	.swatchbar > input {
 		width: 50vw;
 		margin: 0;
 		padding: 0.5em;

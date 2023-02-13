@@ -51,10 +51,21 @@
 			addSwatches(tetradicClr(lastColor));
 		}
 	};
+
+	/**
+	 * delRow - used by "-" button to delete a swatch row
+	 * @param {number} index
+	 */
+	const delRow = (index) => {
+		let copy = [...swatches];
+		copy.splice(index, 1); // modifies in place
+		// Must assign to swatches this way to ensure reactivity
+		swatches = [...copy];
+	};
 </script>
 
 <div class="palette">
-	<div class="buttons">
+	<div class="left-controls">
 		<button on:click={exportPalette}>Export</button>
 		<div class="addrows">
 			<button on:click={addRow}>+</button>
@@ -66,13 +77,17 @@
 				<option value="tetradic">Tetradic (+3)</option>
 			</select>
 		</div>
-		<p>Uses bottom color as starting point for added colors.</p>
+		<!-- <p>
+			Bottom color used as starting point when adding algorithmic swatch rows (complementary,
+			analogous, triadic, tetradic).
+		</p> -->
 	</div>
 	<div class="swatchbars">
-		<header><strong>PALETTE:</strong> Click center swatches to change color</header>
+		<!-- <header><strong>PALETTE:</strong> Click center swatches to change color</header> -->
 		<div class="swatchbar">
-			{#each swatches as swatch}
+			{#each swatches as swatch, i}
 				<PaletteBar id={swatch.label} bind:baseClr={swatch.clr} />
+				<button on:click={() => delRow(i)} disabled={i === 0}>-</button>
 			{/each}
 		</div>
 	</div>
@@ -84,20 +99,20 @@
 		gap: 1em;
 	}
 
-	.buttons {
+	.left-controls {
 		min-width: 12rem;
 	}
 
-	.buttons button {
+	.left-controls button {
 		padding: 0.3rem 0.5rem;
 		font-size: 1rem;
 	}
 
-	.buttons .addrows button {
+	.left-controls .addrows button {
 		max-width: fit-content;
 	}
 
-	.buttons .addrows select {
+	.left-controls .addrows select {
 		padding: 1em;
 		font-size: small;
 		flex-basis: 2;
@@ -105,10 +120,18 @@
 
 	.swatchbars {
 		width: 100%;
+		padding-left: 2rem;
 	}
 
-	.swatchbars header {
-		text-align: center;
+	.swatchbar {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1em;
+	}
+	.swatchbar button {
+		width: fit-content;
+		margin-block: 0;
+		padding: 0.3rem 0.5rem;
 	}
 
 	.addrows {
