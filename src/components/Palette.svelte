@@ -21,56 +21,34 @@
 
 	const exportPalette = () => null;
 
+	/**
+	 * addSwatches - add additional swatches to array
+	 * @param {string[]} colors - colors to add
+	 * @return void
+	 */
+	const addSwatches = (colors) => {
+		colors.forEach((color) => {
+			swatches = [
+				...swatches,
+				{
+					clr: color,
+					label: `swatch${swatches.length}`
+				}
+			];
+		});
+	};
+
 	const addRow = () => {
 		if (addTheme === 'custom') {
-			let newSwatchObj = { clr: randomColor(), label: `swatch${swatches.length}` };
-			swatches = [...swatches, newSwatchObj];
+			addSwatches([randomColor()]);
 		} else if (addTheme === 'complementary') {
-			let newSwatchObj = {
-				clr: complClr(lastColor),
-				label: `swatch${swatches.length}`
-			};
-			swatches = [...swatches, newSwatchObj];
+			addSwatches([complClr(lastColor)]);
 		} else if (addTheme === 'analogous') {
-			let newSwatchObjs = [
-				{
-					clr: anlgClr(lastColor)[0],
-					label: `swatch${swatches.length}`
-				},
-				{
-					clr: anlgClr(lastColor)[1],
-					label: `swatch${swatches.length + 1}`
-				}
-			];
-			swatches = [...swatches, ...newSwatchObjs];
+			addSwatches(anlgClr(lastColor));
 		} else if (addTheme === 'triadic') {
-			let newSwatchObjs = [
-				{
-					clr: triadicClr(lastColor)[0],
-					label: `swatch${swatches.length}`
-				},
-				{
-					clr: triadicClr(lastColor)[1],
-					label: `swatch${swatches.length + 1}`
-				}
-			];
-			swatches = [...swatches, ...newSwatchObjs];
+			addSwatches(triadicClr(lastColor));
 		} else if (addTheme === 'tetradic') {
-			let newSwatchObjs = [
-				{
-					clr: tetradicClr(lastColor)[0],
-					label: `swatch${swatches.length}`
-				},
-				{
-					clr: tetradicClr(lastColor)[1],
-					label: `swatch${swatches.length + 1}`
-				},
-				{
-					clr: tetradicClr(lastColor)[2],
-					label: `swatch${swatches.length + 2}`
-				}
-			];
-			swatches = [...swatches, ...newSwatchObjs];
+			addSwatches(tetradicClr(lastColor));
 		}
 	};
 </script>
@@ -88,6 +66,7 @@
 				<option value="tetradic">Tetradic (+3)</option>
 			</select>
 		</div>
+		<p>Uses bottom color as starting point for added colors.</p>
 	</div>
 	<div class="swatchbars">
 		<header><strong>PALETTE:</strong> Click center swatches to change color</header>
