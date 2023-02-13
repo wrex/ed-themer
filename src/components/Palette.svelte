@@ -1,11 +1,25 @@
 <script>
 	import PaletteBar from './PaletteBar.svelte';
+	import { randomColor } from '$lib/utils';
 
-	let swatches = ['swatch-0'];
+	let swatches = [
+		{ clr: '#888888', label: 'grays' },
+		{ clr: randomColor(), label: 'swatch1' }
+	];
+
+	let addTheme = 'custom';
 
 	const exportPalette = () => null;
 
-	const addRow = () => null;
+	const addRow = () => {
+		console.log(swatches);
+		if (addTheme === 'custom') {
+			let newSwatchObj = { clr: randomColor(), label: `swatch${swatches.length}` };
+			swatches = [...swatches, newSwatchObj];
+		} else if (addTheme === 'complementary') {
+			console.log('do something complementary');
+		}
+	};
 </script>
 
 <div class="palette">
@@ -13,20 +27,19 @@
 		<button on:click={exportPalette}>Export</button>
 		<div class="addrows">
 			<button on:click={addRow}>+</button>
-			<select>
-				<option value="custom">Custom</option>
-				<option value="complementary">Complementary</option>
-				<option value="monochromatic">Monochromatic</option>
-				<option value="Analogous">Analogous</option>
-				<option value="tetradic">Tetradic</option>
+			<select bind:value={addTheme}>
+				<option value="custom">Custom (+1)</option>
+				<option value="complementary">Complementary (+1)</option>
+				<option value="analogous">Analogous (+2)</option>
+				<option value="tetradic">Tetradic (+3)</option>
 			</select>
 		</div>
 	</div>
 	<div class="swatchbars">
-		<header>Click center swatch to change color</header>
+		<header><strong>PALETTE:</strong> Click center swatches to change color</header>
 		<div class="swatchbar">
 			{#each swatches as i}
-				<PaletteBar />
+				<PaletteBar swatchObj={i} />
 			{/each}
 		</div>
 	</div>
@@ -39,7 +52,7 @@
 	}
 
 	.buttons {
-		min-width: 10rem;
+		min-width: 12rem;
 	}
 
 	.buttons button {

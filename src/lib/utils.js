@@ -111,3 +111,11 @@ export const shade = (clr, factor) => {
 
 	return `#${pad2(rt)}${pad2(gt)}${pad2(bt)}`;
 };
+
+export const randomColor = () => {
+	const r = Math.floor(Math.random() * 256);
+	const g = Math.floor(Math.random() * 256);
+	const b = Math.floor(Math.random() * 256);
+
+	return `#${pad2(r)}${pad2(g)}${pad2(b)}`;
+};

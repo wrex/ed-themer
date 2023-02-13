@@ -1,9 +1,10 @@
 <script>
 	export let id = 'foo';
+	export let swatchObj = { clr: '#888888', label: 'grays' };
+	let baseClr = swatchObj.clr;
 
 	import { tint, shade } from '$lib/utils';
 
-	let baseClr = '#888888';
 	$: customProps = `
   --baseClr: ${baseClr};
   --t13: ${tint(baseClr, 0.13)};
