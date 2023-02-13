@@ -1,6 +1,14 @@
 <script>
 	import PaletteBar from './PaletteBar.svelte';
-	import { randomColor, hex2hsl, hsl2hex } from '$lib/utils';
+	import {
+		randomColor,
+		hex2hsl,
+		hsl2hex,
+		complClr,
+		anlgClr,
+		triadicClr,
+		tetradicClr
+	} from '$lib/utils';
 
 	let swatches = [
 		{ clr: '#888888', label: 'grays' },
@@ -9,70 +17,60 @@
 
 	$: lastColor = swatches[swatches.length - 1].clr;
 
-	console.log(hex2hsl(swatches[1].clr));
-	console.log(hsl2hex(hex2hsl(swatches[1].clr)));
-
 	let addTheme = 'custom';
 
 	const exportPalette = () => null;
 
 	const addRow = () => {
-		console.log(swatches);
 		if (addTheme === 'custom') {
 			let newSwatchObj = { clr: randomColor(), label: `swatch${swatches.length}` };
 			swatches = [...swatches, newSwatchObj];
 		} else if (addTheme === 'complementary') {
-			let lastHsl = hex2hsl(lastColor);
-			let newHsl = { h: (lastHsl.h + 180) % 360, s: lastHsl.s, l: lastHsl.l };
 			let newSwatchObj = {
-				clr: hsl2hex(newHsl),
+				clr: complClr(lastColor),
 				label: `swatch${swatches.length}`
 			};
 			swatches = [...swatches, newSwatchObj];
 		} else if (addTheme === 'analogous') {
-			let lastHsl = hex2hsl(lastColor);
-			let newHsl1 = { h: (lastHsl.h + 30) % 360, s: lastHsl.s, l: lastHsl.l };
-			let newHsl2 = { h: (lastHsl.h + 330) % 360, s: lastHsl.s, l: lastHsl.l };
-			let newSwatchObj1 = {
-				clr: hsl2hex(newHsl1),
-				label: `swatch${swatches.length}`
-			};
-			let newSwatchObj2 = {
-				clr: hsl2hex(newHsl2),
-				label: `swatch${swatches.length}`
-			};
-			swatches = [...swatches, newSwatchObj1, newSwatchObj2];
+			let newSwatchObjs = [
+				{
+					clr: anlgClr(lastColor)[0],
+					label: `swatch${swatches.length}`
+				},
+				{
+					clr: anlgClr(lastColor)[1],
+					label: `swatch${swatches.length + 1}`
+				}
+			];
+			swatches = [...swatches, ...newSwatchObjs];
 		} else if (addTheme === 'triadic') {
-			let lastHsl = hex2hsl(lastColor);
-			let newHsl1 = { h: (lastHsl.h + 120) % 360, s: lastHsl.s, l: lastHsl.l };
-			let newHsl2 = { h: (lastHsl.h + 240) % 360, s: lastHsl.s, l: lastHsl.l };
-			let newSwatchObj1 = {
-				clr: hsl2hex(newHsl1),
-				label: `swatch${swatches.length}`
-			};
-			let newSwatchObj2 = {
-				clr: hsl2hex(newHsl2),
-				label: `swatch${swatches.length}`
-			};
-			swatches = [...swatches, newSwatchObj1, newSwatchObj2];
+			let newSwatchObjs = [
+				{
+					clr: triadicClr(lastColor)[0],
+					label: `swatch${swatches.length}`
+				},
+				{
+					clr: triadicClr(lastColor)[1],
+					label: `swatch${swatches.length + 1}`
+				}
+			];
+			swatches = [...swatches, ...newSwatchObjs];
 		} else if (addTheme === 'tetradic') {
-			let lastHsl = hex2hsl(lastColor);
-			let newHsl1 = { h: (lastHsl.h + 90) % 360, s: lastHsl.s, l: lastHsl.l };
-			let newHsl2 = { h: (lastHsl.h + 180) % 360, s: lastHsl.s, l: lastHsl.l };
-			let newHsl3 = { h: (lastHsl.h + 270) % 360, s: lastHsl.s, l: lastHsl.l };
-			let newSwatchObj1 = {
-				clr: hsl2hex(newHsl1),
-				label: `swatch${swatches.length}`
-			};
-			let newSwatchObj2 = {
-				clr: hsl2hex(newHsl2),
-				label: `swatch${swatches.length}`
-			};
-			let newSwatchObj3 = {
-				clr: hsl2hex(newHsl3),
-				label: `swatch${swatches.length}`
-			};
-			swatches = [...swatches, newSwatchObj1, newSwatchObj2, newSwatchObj3];
+			let newSwatchObjs = [
+				{
+					clr: tetradicClr(lastColor)[0],
+					label: `swatch${swatches.length}`
+				},
+				{
+					clr: tetradicClr(lastColor)[1],
+					label: `swatch${swatches.length + 1}`
+				},
+				{
+					clr: tetradicClr(lastColor)[2],
+					label: `swatch${swatches.length + 2}`
+				}
+			];
+			swatches = [...swatches, ...newSwatchObjs];
 		}
 	};
 </script>

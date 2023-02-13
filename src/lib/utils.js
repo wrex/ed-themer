@@ -234,3 +234,51 @@ export const hsl2hex = (hsl) => {
 
 	return '#' + toHex(r) + toHex(g) + toHex(b);
 };
+
+/**
+ * complClr - calculate 180° opposite complementary color
+ * @param {string} clr hex string defining a color
+ * @returns {string}   hex string of complementary color
+ */
+export const complClr = (clr) => {
+	let hsl = hex2hsl(clr);
+	let newHsl = { h: (hsl.h + 180) % 360, s: hsl.s, l: hsl.l };
+	return hsl2hex(newHsl);
+};
+
+/**
+ * anlgClr - calculate analagous colors
+ * @param {string} clr hex string defining a color
+ * @returns {string[]} two element array of hex colors
+ */
+export const anlgClr = (clr) => {
+	let hsl = hex2hsl(clr);
+	let newHsl1 = { h: (hsl.h + 30) % 360, s: hsl.s, l: hsl.l };
+	let newHsl2 = { h: (hsl.h + 330) % 360, s: hsl.s, l: hsl.l };
+	return [hsl2hex(newHsl1), hsl2hex(newHsl2)];
+};
+
+/**
+ * triadic - calculate triadic colors
+ * @param {string} clr hex string defining a color
+ * @returns {string[]} two element array of hex colors
+ */
+export const triadicClr = (clr) => {
+	let hsl = hex2hsl(clr);
+	let newHsl1 = { h: (hsl.h + 120) % 360, s: hsl.s, l: hsl.l };
+	let newHsl2 = { h: (hsl.h + 240) % 360, s: hsl.s, l: hsl.l };
+	return [hsl2hex(newHsl1), hsl2hex(newHsl2)];
+};
+
+/**
+ * tetradic - calculate tetrdic colors
+ * @param {string} clr hex string defining a color
+ * @returns {string[]} three element array of hex colors
+ */
+export const tetradicClr = (clr) => {
+	let hsl = hex2hsl(clr);
+	let newHsl1 = { h: (hsl.h + 90) % 360, s: hsl.s, l: hsl.l };
+	let newHsl2 = { h: (hsl.h + 180) % 360, s: hsl.s, l: hsl.l };
+	let newHsl3 = { h: (hsl.h + 270) % 360, s: hsl.s, l: hsl.l };
+	return [hsl2hex(newHsl1), hsl2hex(newHsl2), hsl2hex(newHsl3)];
+};
