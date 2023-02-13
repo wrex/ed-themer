@@ -2,7 +2,6 @@
 	display: grid;
 	height: 100vh;
 	grid-template-columns: auto 1fr;
-	grid-template-rows: auto 3fr max(auto, 225px);
 	grid-template-areas:
 		'nav         nav'
 		'user-colors samples'
@@ -41,7 +40,6 @@
 #samples {
 	padding: 0;
 	grid-area: samples;
-	min-width: 1024px;
 	overflow-y: scroll;
 	background-color: var(--USER-surface-1);
 }
@@ -50,4 +48,6 @@
 	grid-area: palette;
 	overflow-y: scroll;
 	border-top: 1px solid white;
+	padding-block: 1rem;
+	max-height: 28vh;
 }

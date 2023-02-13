@@ -57,7 +57,7 @@
 	.swatch {
 		border: 1px solid var(--baseClr);
 		height: 50px;
-		width: 100vw;
+		width: 100%;
 	}
 
 	.t13 {
