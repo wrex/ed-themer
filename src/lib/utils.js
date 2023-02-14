@@ -3,58 +3,39 @@ export const allPropNames = [
 	'surface-2',
 	'surface-3',
 	'surface-4',
-	'inverted-surface',
-	'text-clr',
-	'inverted-text',
-	'highlight-text',
-	'grayed-text',
+	'surface-inv',
+	'text',
+	'text-inv',
+	'text-hl',
+	'text-grayed',
 	'brand',
-	'progress-clr',
+	'progress',
 	'success',
 	'alert',
-	'radical-clr',
-	'kanji-clr',
-	'vocab-clr',
-	'apprentice-clr',
-	'guru-clr',
-	'master-clr',
-	'enlightened-clr',
-	'burned-clr',
-	'lesson-clr',
-	'review-clr',
+	'radical',
+	'kanji',
+	'vocab',
+	'apprentice',
+	'guru',
+	'master',
+	'enlightened',
+	'burned',
+	'lesson',
+	'review',
 	'correct',
 	'incorrect',
-	'meaning-clr',
-	'reading-clr'
+	'meaning',
+	'reading'
 ];
 
-export const surfaceNames = [
-	'surface-1',
-	'surface-2',
-	'surface-3',
-	'surface-4',
-	'inverted-surface'
-];
+export const surfaceNames = ['surface-1', 'surface-2', 'surface-3', 'surface-4', 'surface-inv'];
 
-export const textNames = ['text-clr', 'inverted-text', 'highlight-text', 'grayed-text'];
+export const textNames = ['text', 'text-inv', 'text-hl', 'text-grayed'];
 
-export const brandNames = ['brand', 'progress-clr', 'success', 'alert'];
+export const brandNames = ['brand', 'progress', 'success', 'alert'];
 
-export const typeNames = ['radical-clr', 'kanji-clr', 'vocab-clr'];
+export const typeNames = ['radical', 'kanji', 'vocab'];
 
-export const srsNames = [
-	'apprentice-clr',
-	'guru-clr',
-	'master-clr',
-	'enlightened-clr',
-	'burned-clr'
-];
+export const srsNames = ['apprentice', 'guru', 'master', 'enlightened', 'burned'];
 
-export const reviewNames = [
-	'lesson-clr',
-	'review-clr',
-	'correct',
-	'incorrect',
-	'meaning-clr',
-	'reading-clr'
-];
+export const reviewNames = ['lesson', 'review', 'correct', 'incorrect', 'meaning', 'reading'];
