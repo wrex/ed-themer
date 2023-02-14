@@ -49,5 +49,6 @@
 	overflow-y: scroll;
 	border-top: 1px solid white;
 	padding-block: 1rem;
-	max-height: 28vh;
+	max-height: 30vh;
+	min-height: 220px;
 }
