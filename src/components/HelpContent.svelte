@@ -28,6 +28,24 @@
 	</span> displays all of the current user style settings, and allows you to copy them to your clipboard.
 </p>
 
+<h2>Central mockups</h2>
+
+<p>
+	The center section displays one of three mockup html files. You will probably want to style
+	surfaces first, then reviews, then the dashboard.
+</p>
+
+<ol>
+	<li>"Surfaces" lets you make color decisions for "surfaces" and text elements.</li>
+	<li>
+		"Reviews" mocks up the WaniKani UI during reviews and lessons. Since this is where you spend the
+		most time in the app, it makes sense to spend much of your styling effort here. This mockup has
+		toggles at the bottom to change the state (radical/kanji/vocab, etc.). You'll want to check all
+		combinations of these to ensure your color choices "work"
+	</li>
+	<li>"Dashboard" shows a mockup of the WaniKani dashboard.</li>
+</ol>
+
 <h2>Props Sidebar</h2>
 
 <p>
