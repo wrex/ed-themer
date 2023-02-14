@@ -10,15 +10,21 @@
 		tetradicClr
 	} from '$lib/utils';
 
+	/* Initialize swatches with grays and tints/shades of one random color */
 	let swatches = [
 		{ clr: '#888888', label: 'grays' },
 		{ clr: randomColor(), label: 'swatch1' }
 	];
 
+	/* Last color row used for algorithmic additions */
 	$: lastColor = swatches[swatches.length - 1].clr;
 
-	let addTheme = 'custom';
+	/* Default is to add a custom (random) color */
+	let colorScheme = 'custom';
 
+	/**
+	 * exportPalette - display a modal with all the color swatches
+	 */
 	const exportPalette = () => null;
 
 	/**
@@ -39,15 +45,15 @@
 	};
 
 	const addRow = () => {
-		if (addTheme === 'custom') {
+		if (colorScheme === 'custom') {
 			addSwatches([randomColor()]);
-		} else if (addTheme === 'complementary') {
+		} else if (colorScheme === 'complementary') {
 			addSwatches([complClr(lastColor)]);
-		} else if (addTheme === 'analogous') {
+		} else if (colorScheme === 'analogous') {
 			addSwatches(anlgClr(lastColor));
-		} else if (addTheme === 'triadic') {
+		} else if (colorScheme === 'triadic') {
 			addSwatches(triadicClr(lastColor));
-		} else if (addTheme === 'tetradic') {
+		} else if (colorScheme === 'tetradic') {
 			addSwatches(tetradicClr(lastColor));
 		}
 	};
@@ -66,10 +72,10 @@
 
 <div class="palette">
 	<div class="left-controls">
-		<button on:click={exportPalette}>Export</button>
+		<button on:click={exportPalette}>Palette</button>
 		<div class="addrows">
 			<button on:click={addRow}>+</button>
-			<select bind:value={addTheme}>
+			<select bind:value={colorScheme}>
 				<option value="custom">Custom (+1)</option>
 				<option value="complementary">Complementary (+1)</option>
 				<option value="analogous">Analogous (+2)</option>

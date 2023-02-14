@@ -22,14 +22,19 @@
 
 	$: CSS = makeCssRule($userProps);
 
-	let modalOpen = false;
-	const toggleModal = () => {
-		modalOpen = modalOpen ? false : true;
+	let stylesheetOpen = false;
+	const toggleStylesheet = () => {
+		stylesheetOpen = !stylesheetOpen;
+	};
+
+	let helpOpen = false;
+	const toggleHelp = () => {
+		helpOpen = !helpOpen;
 	};
 
 	const copyToClipboard = () => {
 		navigator.clipboard.writeText(CSS);
-		toggleModal();
+		toggleStylesheet();
 	};
 
 	const toggleSidebar = () => {
@@ -63,23 +68,39 @@
 			</li>
 		{/if}
 		<li><button class="iconButton" on:click={resetProps}><ReloadIcon /></button></li>
-		<li><button class="iconButton" on:click={toggleModal}><ExportIcon /></button></li>
+		<li><button class="iconButton" on:click={toggleStylesheet}><ExportIcon /></button></li>
+		<li><button class="iconButton" on:click={toggleHelp}>?</button></li>
 	</ul>
 </nav>
 
-<!-- Modal -->
-<dialog open={modalOpen || null} id="modal-example">
+<!-- Stylesheet modal -->
+<dialog open={stylesheetOpen || null} id="stylesheet">
 	<article>
 		<a
 			href="#close"
 			aria-label="Close"
 			class="close"
-			data-target="modal-example"
-			on:click={toggleModal}>&nbsp</a
+			data-target="stylesheet"
+			on:click={toggleStylesheet}>&nbsp</a
 		>
 		<pre class="textBox">{CSS}</pre>
 		<footer>
-			<button data-target="modal-example" on:click={copyToClipboard}> Copy to Clipboard </button>
+			<button data-target="stylesheet" on:click={copyToClipboard}> Copy to Clipboard </button>
+		</footer>
+	</article>
+</dialog>
+
+<!-- Help modal -->
+<dialog open={helpOpen || null} id="helpfile">
+	<article>
+		<a href="#close" aria-label="Close" class="close" data-target="helpfile" on:click={toggleHelp}
+			>&nbsp</a
+		>
+		<div class="helptext">
+			<h1>Help text goes here</h1>
+		</div>
+		<footer>
+			<button data-target="helpfile" on:click={toggleHelp}>OK</button>
 		</footer>
 	</article>
 </dialog>
