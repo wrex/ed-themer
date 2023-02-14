@@ -1,5 +1,5 @@
 <script>
-	import { sample, userProps, resetProps, sidebarExpanded } from '$lib/stores.js';
+	import { sample, userProps, resetProps, sidebarExpanded, modal } from '$lib/stores.js';
 	import ExportIcon from '../icons/ExportIcon.svelte';
 	import ReloadIcon from '../icons/ReloadIcon.svelte';
 	import CollapseLeftIcon from '../icons/CollapseLeftIcon.svelte';
@@ -22,19 +22,26 @@
 
 	$: CSS = makeCssRule($userProps);
 
-	let stylesheetOpen = false;
 	const toggleStylesheet = () => {
-		stylesheetOpen = !stylesheetOpen;
+		$modal.userStyles = !$modal.userStyles;
 	};
 
-	let helpOpen = false;
 	const toggleHelp = () => {
-		helpOpen = !helpOpen;
+		$modal.help = !$modal.help;
 	};
 
-	const copyToClipboard = () => {
+	const togglePalette = () => {
+		$modal.paletteStyles = !$modal.paletteStyles;
+	};
+
+	const userToClipboard = () => {
 		navigator.clipboard.writeText(CSS);
 		toggleStylesheet();
+	};
+
+	const paletteToClipboard = () => {
+		navigator.clipboard.writeText('hi mom!');
+		togglePalette();
 	};
 
 	const toggleSidebar = () => {
@@ -74,7 +81,7 @@
 </nav>
 
 <!-- Stylesheet modal -->
-<dialog open={stylesheetOpen || null} id="stylesheet">
+<dialog open={$modal.userStyles || null} id="stylesheet">
 	<article>
 		<a
 			href="#close"
@@ -85,13 +92,13 @@
 		>
 		<pre class="textBox">{CSS}</pre>
 		<footer>
-			<button data-target="stylesheet" on:click={copyToClipboard}> Copy to Clipboard </button>
+			<button data-target="stylesheet" on:click={userToClipboard}> Copy to Clipboard </button>
 		</footer>
 	</article>
 </dialog>
 
 <!-- Help modal -->
-<dialog open={helpOpen || null} id="helpfile">
+<dialog open={$modal.help || null} id="helpfile">
 	<article>
 		<a href="#close" aria-label="Close" class="close" data-target="helpfile" on:click={toggleHelp}
 			>&nbsp</a
@@ -101,6 +108,23 @@
 		</div>
 		<footer>
 			<button data-target="helpfile" on:click={toggleHelp}>OK</button>
+		</footer>
+	</article>
+</dialog>
+
+<!-- Palette modal -->
+<dialog open={$modal.paletteStyles || null} id="palette-modal">
+	<article>
+		<a
+			href="#close"
+			aria-label="Close"
+			class="close"
+			data-target="palette-modal"
+			on:click={togglePalette}>&nbsp</a
+		>
+		<pre class="textBox">Palette goes here</pre>
+		<footer>
+			<button data-target="palette-modal" on:click={paletteToClipboard}> Copy to Clipboard </button>
 		</footer>
 	</article>
 </dialog>

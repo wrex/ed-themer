@@ -1,14 +1,7 @@
 <script>
 	import PaletteBar from './PaletteBar.svelte';
-	import {
-		randomColor,
-		hex2hsl,
-		hsl2hex,
-		complClr,
-		anlgClr,
-		triadicClr,
-		tetradicClr
-	} from '$lib/utils';
+	import { randomColor, complClr, anlgClr, triadicClr, tetradicClr } from '$lib/utils';
+	import { modal } from '$lib/stores';
 
 	/* Initialize swatches with grays and tints/shades of one random color */
 	let swatches = [
@@ -25,7 +18,9 @@
 	/**
 	 * exportPalette - display a modal with all the color swatches
 	 */
-	const exportPalette = () => null;
+	const exportPalette = () => {
+		$modal.paletteStyles = !$modal.paletteStyles;
+	};
 
 	/**
 	 * addSwatches - add additional swatches to array
