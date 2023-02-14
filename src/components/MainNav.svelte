@@ -4,6 +4,7 @@
 	import ReloadIcon from '../icons/ReloadIcon.svelte';
 	import CollapseLeftIcon from '../icons/CollapseLeftIcon.svelte';
 	import ExpandRightIcon from '../icons/ExpandRightIcon.svelte';
+	import HelpContent from './HelpContent.svelte';
 	import Logo from './Logo.svelte';
 	import { allPropNames } from '$lib/utils';
 
@@ -103,9 +104,7 @@
 		<a href="#close" aria-label="Close" class="close" data-target="helpfile" on:click={toggleHelp}
 			>&nbsp</a
 		>
-		<div class="helptext">
-			<h1>Help text goes here</h1>
-		</div>
+		<HelpContent />
 		<footer>
 			<button data-target="helpfile" on:click={toggleHelp}>OK</button>
 		</footer>
