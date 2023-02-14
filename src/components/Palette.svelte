@@ -40,6 +40,7 @@
 	};
 
 	const addRow = () => {
+		if (swatches.length > 20) return;
 		if (colorScheme === 'custom') {
 			addSwatches([randomColor()]);
 		} else if (colorScheme === 'complementary') {
