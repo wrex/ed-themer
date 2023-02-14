@@ -1,5 +1,13 @@
 <script>
-	import { sample, userProps, resetProps, sidebarExpanded, modal } from '$lib/stores.js';
+	import {
+		sample,
+		userProps,
+		resetProps,
+		sidebarExpanded,
+		modal,
+		userCSS,
+		paletteCSS
+	} from '$lib/stores.js';
 	import ExportIcon from '../icons/ExportIcon.svelte';
 	import ReloadIcon from '../icons/ReloadIcon.svelte';
 	import CollapseLeftIcon from '../icons/CollapseLeftIcon.svelte';
@@ -21,7 +29,7 @@
 		return retval;
 	};
 
-	$: CSS = makeCssRule($userProps);
+	$: $userCSS = makeCssRule($userProps);
 
 	const toggleStylesheet = () => {
 		$modal.userStyles = !$modal.userStyles;
@@ -36,7 +44,7 @@
 	};
 
 	const userToClipboard = () => {
-		navigator.clipboard.writeText(CSS);
+		navigator.clipboard.writeText($userCSS);
 		toggleStylesheet();
 	};
 
@@ -91,7 +99,7 @@
 			data-target="stylesheet"
 			on:click={toggleStylesheet}>&nbsp</a
 		>
-		<pre class="textBox">{CSS}</pre>
+		<pre class="textBox">{$userCSS}</pre>
 		<footer>
 			<button data-target="stylesheet" on:click={userToClipboard}> Copy to Clipboard </button>
 		</footer>
@@ -121,7 +129,7 @@
 			data-target="palette-modal"
 			on:click={togglePalette}>&nbsp</a
 		>
-		<pre class="textBox">Palette goes here</pre>
+		<pre class="textBox">{$paletteCSS}</pre>
 		<footer>
 			<button data-target="palette-modal" on:click={paletteToClipboard}> Copy to Clipboard </button>
 		</footer>

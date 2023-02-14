@@ -91,3 +91,6 @@ export const swatches = writable([
 	{ clr: '#888888', label: 'grays' },
 	{ clr: randomColor(), label: 'swatch1' }
 ]);
+
+export const userCSS = writable('');
+export const paletteCSS = writable('');

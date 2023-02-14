@@ -24,21 +24,21 @@
 </script>
 
 <div class="swatchbar" style={customProps}>
-	<div class="swatch s91" />
-	<div class="swatch s78" />
-	<div class="swatch s65" />
-	<div class="swatch s52" />
-	<div class="swatch s39" />
-	<div class="swatch s26" />
-	<div class="swatch s13" />
-	<input type="color" name={id} {id} bind:value={baseClr} />
-	<div class="swatch t13" />
-	<div class="swatch t26" />
-	<div class="swatch t39" />
-	<div class="swatch t52" />
-	<div class="swatch t65" />
-	<div class="swatch t78" />
 	<div class="swatch t91" />
+	<div class="swatch t78" />
+	<div class="swatch t65" />
+	<div class="swatch t52" />
+	<div class="swatch t39" />
+	<div class="swatch t26" />
+	<div class="swatch t13" />
+	<input type="color" name={id} {id} bind:value={baseClr} />
+	<div class="swatch s13" />
+	<div class="swatch s26" />
+	<div class="swatch s39" />
+	<div class="swatch s52" />
+	<div class="swatch s65" />
+	<div class="swatch s78" />
+	<div class="swatch s91" />
 </div>
 
 <style>

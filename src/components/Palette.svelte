@@ -1,7 +1,15 @@
 <script>
 	import PaletteBar from './PaletteBar.svelte';
-	import { randomColor, complClr, anlgClr, triadicClr, tetradicClr } from '$lib/colorUtils';
-	import { modal, swatches } from '$lib/stores';
+	import {
+		tint,
+		shade,
+		randomColor,
+		complClr,
+		anlgClr,
+		triadicClr,
+		tetradicClr
+	} from '$lib/colorUtils';
+	import { modal, swatches, paletteCSS } from '$lib/stores';
 
 	/* Last color row used for algorithmic additions */
 	$: lastColor = $swatches[$swatches.length - 1].clr;
@@ -9,10 +17,41 @@
 	/* Default is to add a custom (random) color */
 	let colorScheme = 'custom';
 
+	/* Create CSS properties from swatches */
+	const genPaletteCSS = (swatches) => {
+		const swatchCss = (clr, label) => {
+			/* brightest tint to darkest shade */
+			return `
+--${label}-0: ${tint(clr, 0.91)}
+--${label}-1: ${tint(clr, 0.78)}
+--${label}-2: ${tint(clr, 0.65)}
+--${label}-3: ${tint(clr, 0.52)}
+--${label}-4: ${tint(clr, 0.39)}
+--${label}-5: ${tint(clr, 0.26)}
+--${label}-6: ${tint(clr, 0.13)}
+--${label}-7: ${clr}
+--${label}-8: ${shade(clr, 0.13)}
+--${label}-9: ${shade(clr, 0.26)}
+--${label}-10: ${shade(clr, 0.39)}
+--${label}-11: ${shade(clr, 0.52)}
+--${label}-12: ${shade(clr, 0.65)}
+--${label}-13: ${shade(clr, 0.78)}
+--${label}-14: ${shade(clr, 0.91)}
+			`;
+		};
+
+		let CSS = '';
+		swatches.forEach((swatch) => {
+			CSS += swatchCss(swatch.clr, swatch.label);
+		});
+		return CSS;
+	};
+
 	/**
 	 * exportPalette - display a modal with all the color swatches
 	 */
 	const exportPalette = () => {
+		$paletteCSS = genPaletteCSS($swatches);
 		$modal.paletteStyles = !$modal.paletteStyles;
 	};
 

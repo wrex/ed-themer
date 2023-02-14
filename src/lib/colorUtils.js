@@ -9,8 +9,9 @@ const pad2 = (decimalValue) => {
 
 /**
  * tint - generate a tint from a color
- * @param clr {string} hex color, e.g. #00aabb
- * @param factor {number} from 0 to 1
+ * @param {string} clr hex color, e.g. '#00aabb'
+ * @param {number} factor from 0 to 1
+ * @returns {string} - e.g. '#DEADBF'
  */
 export const tint = (clr, factor) => {
 	/* see https://maketintsandshades.com/about */
@@ -31,8 +32,9 @@ export const tint = (clr, factor) => {
 
 /**
  * shade - generate a tint from a color
- * @param clr {string}
- * @param factor {number}
+ * @param {string} clr hex color, e.g. '#00aabb'
+ * @param {number} factor from 0 to 1
+ * @returns {string} - e.g. '#DEADBF'
  */
 export const shade = (clr, factor) => {
 	/* see https://maketintsandshades.com/about */
