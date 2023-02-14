@@ -1,6 +1,6 @@
 <script>
 	import PaletteBar from './PaletteBar.svelte';
-	import { randomColor, complClr, anlgClr, triadicClr, tetradicClr } from '$lib/utils';
+	import { randomColor, complClr, anlgClr, triadicClr, tetradicClr } from '$lib/colorUtils';
 	import { modal } from '$lib/stores';
 
 	/* Initialize swatches with grays and tints/shades of one random color */

@@ -2,7 +2,7 @@
 	export let id = 'grays';
 	export let baseClr = '#888888';
 
-	import { tint, shade } from '$lib/utils';
+	import { tint, shade } from '$lib/colorUtils';
 
 	$: customProps = `
   --baseClr: ${baseClr};
