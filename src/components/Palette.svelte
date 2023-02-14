@@ -1,16 +1,10 @@
 <script>
 	import PaletteBar from './PaletteBar.svelte';
 	import { randomColor, complClr, anlgClr, triadicClr, tetradicClr } from '$lib/colorUtils';
-	import { modal } from '$lib/stores';
-
-	/* Initialize swatches with grays and tints/shades of one random color */
-	let swatches = [
-		{ clr: '#888888', label: 'grays' },
-		{ clr: randomColor(), label: 'swatch1' }
-	];
+	import { modal, swatches } from '$lib/stores';
 
 	/* Last color row used for algorithmic additions */
-	$: lastColor = swatches[swatches.length - 1].clr;
+	$: lastColor = $swatches[$swatches.length - 1].clr;
 
 	/* Default is to add a custom (random) color */
 	let colorScheme = 'custom';
@@ -29,18 +23,18 @@
 	 */
 	const addSwatches = (colors) => {
 		colors.forEach((color) => {
-			swatches = [
-				...swatches,
+			$swatches = [
+				...$swatches,
 				{
 					clr: color,
-					label: `swatch${swatches.length}`
+					label: `swatch${$swatches.length}`
 				}
 			];
 		});
 	};
 
 	const addRow = () => {
-		if (swatches.length > 20) return;
+		if ($swatches.length > 20) return;
 		if (colorScheme === 'custom') {
 			addSwatches([randomColor()]);
 		} else if (colorScheme === 'complementary') {
@@ -59,10 +53,10 @@
 	 * @param {number} index
 	 */
 	const delRow = (index) => {
-		let copy = [...swatches];
+		let copy = [...$swatches];
 		copy.splice(index, 1); // modifies in place
 		// Must assign to swatches this way to ensure reactivity
-		swatches = [...copy];
+		$swatches = [...copy];
 	};
 </script>
 
@@ -87,7 +81,7 @@
 	<div class="swatchbars">
 		<!-- <header><strong>PALETTE:</strong> Click center swatches to change color</header> -->
 		<div class="swatchbar">
-			{#each swatches as swatch, i}
+			{#each $swatches as swatch, i}
 				<PaletteBar id={swatch.label} bind:baseClr={swatch.clr} />
 				<button on:click={() => delRow(i)} disabled={i === 0}>-</button>
 			{/each}

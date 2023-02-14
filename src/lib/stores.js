@@ -1,4 +1,5 @@
 import { writable, get } from 'svelte/store';
+import { randomColor } from './colorUtils';
 
 const defaultProps = {
 	clr: {
@@ -84,3 +85,9 @@ export const modal = writable({
 	paletteStyles: false,
 	help: false
 });
+
+/* Initialize swatches with grays and tints/shades of one random color */
+export const swatches = writable([
+	{ clr: '#888888', label: 'grays' },
+	{ clr: randomColor(), label: 'swatch1' }
+]);
