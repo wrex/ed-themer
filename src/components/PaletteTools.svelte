@@ -14,7 +14,16 @@
 	/* Last color row used for algorithmic additions */
 	$: lastColor = $swatches[$swatches.length - 1].clr;
 
+	/**
+	 * genPaletteCSS - generate custom props for Palette
+	 * @param {{clr: string, label: string}[]} swatches
+	 */
 	const genPaletteCSS = (swatches) => {
+		/**
+		 * swatchCSS - props for tints and shades of one color
+		 * @param {string} clr
+		 * @param {string} label
+		 */
 		const swatchCss = (clr, label) => {
 			/* brightest tint to darkest shade */
 			return `
@@ -81,6 +90,15 @@
 			addSwatches(tetradicClr(lastColor));
 		}
 	};
+
+	const togglePalette = () => {
+		$modal.paletteStyles = !$modal.paletteStyles;
+	};
+
+	const paletteToClipboard = () => {
+		navigator.clipboard.writeText('hi mom!');
+		togglePalette();
+	};
 </script>
 
 <div class="left-controls">
@@ -96,3 +114,21 @@
 		</select>
 	</div>
 </div>
+
+<!-- Palette modal -->
+<dialog open={$modal.paletteStyles || null} id="palette-modal">
+	<article>
+		<a
+			href="#close"
+			aria-label="Close"
+			class="close"
+			data-target="palette-modal"
+			on:click={togglePalette}>&nbsp</a
+		>
+		<h1>Color Palette Properties</h1>
+		<pre class="textBox">{$paletteCSS}</pre>
+		<footer>
+			<button data-target="palette-modal" on:click={paletteToClipboard}> Copy to Clipboard </button>
+		</footer>
+	</article>
+</dialog>

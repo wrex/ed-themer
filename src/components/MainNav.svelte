@@ -1,13 +1,5 @@
 <script>
-	import {
-		sample,
-		userProps,
-		resetProps,
-		sidebarExpanded,
-		modal,
-		userCSS,
-		paletteCSS
-	} from '$lib/stores.js';
+	import { sample, userProps, resetProps, sidebarExpanded, modal, userCSS } from '$lib/stores.js';
 	import ExportIcon from '../icons/ExportIcon.svelte';
 	import ReloadIcon from '../icons/ReloadIcon.svelte';
 	import CollapseLeftIcon from '../icons/CollapseLeftIcon.svelte';
@@ -39,18 +31,9 @@
 		$modal.help = !$modal.help;
 	};
 
-	const togglePalette = () => {
-		$modal.paletteStyles = !$modal.paletteStyles;
-	};
-
 	const userToClipboard = () => {
 		navigator.clipboard.writeText($userCSS);
 		toggleStylesheet();
-	};
-
-	const paletteToClipboard = () => {
-		navigator.clipboard.writeText('hi mom!');
-		togglePalette();
 	};
 
 	const toggleSidebar = () => {
@@ -119,28 +102,3 @@
 		</footer>
 	</article>
 </dialog>
-
-<!-- Palette modal -->
-<dialog open={$modal.paletteStyles || null} id="palette-modal">
-	<article>
-		<a
-			href="#close"
-			aria-label="Close"
-			class="close"
-			data-target="palette-modal"
-			on:click={togglePalette}>&nbsp</a
-		>
-		<h1>Color Palette Properties</h1>
-		<pre class="textBox">{$paletteCSS}</pre>
-		<footer>
-			<button data-target="palette-modal" on:click={paletteToClipboard}> Copy to Clipboard </button>
-		</footer>
-	</article>
-</dialog>
-
-<style>
-	.textBox {
-		max-height: 50vh;
-		overflow-y: scroll;
-	}
-</style>

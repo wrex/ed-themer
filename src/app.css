@@ -59,3 +59,8 @@
 	color: var(--USER-text-grayed);
 	opacity: 0.5;
 }
+
+.textBox {
+	max-height: 50vh;
+	overflow-y: scroll;
+}
