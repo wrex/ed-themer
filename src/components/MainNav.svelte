@@ -6,7 +6,6 @@
 		sidebarExpanded,
 		modal,
 		userCSS,
-		paletteCSS,
 		swatches
 	} from '$lib/stores.js';
 	import ExportIcon from '../icons/ExportIcon.svelte';
@@ -47,21 +46,21 @@
 		const swatchCss = (clr, label) => {
 			/* brightest tint to darkest shade */
 			return `
---${slugify(label)}-0: ${tint(clr, 0.91)}
---${slugify(label)}-1: ${tint(clr, 0.78)}
---${slugify(label)}-2: ${tint(clr, 0.65)}
---${slugify(label)}-3: ${tint(clr, 0.52)}
---${slugify(label)}-4: ${tint(clr, 0.39)}
---${slugify(label)}-5: ${tint(clr, 0.26)}
---${slugify(label)}-6: ${tint(clr, 0.13)}
---${slugify(label)}-7: ${clr}
---${slugify(label)}-8: ${shade(clr, 0.13)}
---${slugify(label)}-9: ${shade(clr, 0.26)}
---${slugify(label)}-10: ${shade(clr, 0.39)}
---${slugify(label)}-11: ${shade(clr, 0.52)}
---${slugify(label)}-12: ${shade(clr, 0.65)}
---${slugify(label)}-13: ${shade(clr, 0.78)}
---${slugify(label)}-14: ${shade(clr, 0.91)}
+  --${slugify(label)}-0: ${tint(clr, 0.91)}
+  --${slugify(label)}-1: ${tint(clr, 0.78)}
+  --${slugify(label)}-2: ${tint(clr, 0.65)}
+  --${slugify(label)}-3: ${tint(clr, 0.52)}
+  --${slugify(label)}-4: ${tint(clr, 0.39)}
+  --${slugify(label)}-5: ${tint(clr, 0.26)}
+  --${slugify(label)}-6: ${tint(clr, 0.13)}
+  --${slugify(label)}-7: ${clr}
+  --${slugify(label)}-8: ${shade(clr, 0.13)}
+  --${slugify(label)}-9: ${shade(clr, 0.26)}
+  --${slugify(label)}-10: ${shade(clr, 0.39)}
+  --${slugify(label)}-11: ${shade(clr, 0.52)}
+  --${slugify(label)}-12: ${shade(clr, 0.65)}
+  --${slugify(label)}-13: ${shade(clr, 0.78)}
+  --${slugify(label)}-14: ${shade(clr, 0.91)}
 `;
 		};
 		let CSS = '';
@@ -71,9 +70,26 @@
 		return CSS;
 	};
 
+	/**
+	 * genUserCSS - generate custom props for each USER property
+	 */
+	const genUserCSS = () => {
+		let CSS = '';
+		allPropNames.forEach((name) => {
+			const thisEntry = `--USER-${name}`;
+			const refVal = $userProps.clrRef[thisEntry];
+			const clrVal = $userProps.clr[thisEntry];
+			if (refVal === 'Custom') {
+				CSS += `  ${thisEntry}: ${clrVal}; \r\n`;
+			} else {
+				CSS += `  ${thisEntry}: var(${refVal}); \r\n`;
+			}
+		});
+		return CSS;
+	};
+
 	const toggleStylesheet = () => {
-		console.log('in toggle');
-		$paletteCSS = genPaletteCSS($swatches);
+		$userCSS = genUserCSS() + `\r\n  /* palette colors */\r\n` + genPaletteCSS($swatches);
 		$modal.userStyles = !$modal.userStyles;
 	};
 </script>
@@ -121,19 +137,7 @@
 		>
 		<h1>Custom Properties</h1>
 		<!-- prettier-ignore -->
-		<pre class="textBox">
-:root &lbrace;
-			{#each allPropNames as name}
-				{#if $userProps.clrRef[`--USER-${name}`] === 'Custom'}
-	--USER-{name}: {$userProps.clr[`--USER-${name}`]};<br />
-				{:else}
-	--USER-{name}: var({$userProps.clrRef[`--USER-${name}`]});
-				{/if}
-			{/each}
-/* * * * * * * * * * * * * * * * * * * * * * * * */
-{$paletteCSS}
-&rbrace;
-		</pre>
+		<pre class="textBox">{`:root {\r\n${$userCSS}}`}</pre>
 		<footer>
 			<button data-target="stylesheet" on:click={userToClipboard}> Copy to Clipboard </button>
 		</footer>

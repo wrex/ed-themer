@@ -93,6 +93,5 @@ export const swatches = writable([
 ]);
 
 export const userCSS = writable('');
-export const paletteCSS = writable('');
 
 export const colorScheme = writable('custom');
