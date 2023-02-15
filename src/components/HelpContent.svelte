@@ -6,6 +6,11 @@
 
 <h1>WK Elementary Dark Themer</h1>
 
+<blockquote>
+	Click the close icon at the top or the "OK" button at the end to close this dialog.
+	<mark> You may have to scroll to see these! </mark>
+</blockquote>
+
 <p>
 	This app lets you create a set of "CSS custom properties" to override the default color scheme of
 	the Elementary Dark stylesheet for <a href="https://www.wanikani.com">WaniKani.com</a>.
@@ -93,10 +98,15 @@
 <h3>Color palette</h3>
 
 <p>
-	At the bottom of your screen are rows of swatches you can use as you develop your color scheme. By
-	default, one row of gray swatches (centered on "#888888"), and one row of a random color in
-	different tints and shades are displayed. Seven shades of the center color are displayed to the
-	left, and seven tints to the right.
+	The bottom section of the screen allows you to generate a consistent palette of related colors.
+	The controls on the left allow you to export the current palette, and to add more swatch rows.
+</p>
+
+<p>
+	The bottom right contains rows of swatches to develop your color scheme. Initially, this section
+	displays one row of gray swatches (centered on "#333333"), and one row of a random hue are
+	displayed. Each row contains 15 swatches: seven tints, the user selected color in the middle, and
+	seven shades. Swatches are ordered from lightest to darkest.
 </p>
 
 <p>
@@ -114,13 +124,18 @@
 	be removed).
 </p>
 
+<p>
+	There is also a text input box that allows you to enter a meaningful name to any row of swatches
+	prior to export.
+</p>
+
 <h3>Palette controls</h3>
 
 <p>
-	<span role="button" class="iconButton">Palette</span> let's you copy the palette of all palette swatches
-	to your clipboard if you'd like to use them elsewhere. Note that using the eyedropper tool to select
-	one of these swatches unfortunately just sets the hex color value for that user property, and doesn't
-	reference this palette property in the generated CSS.
+	<span role="button" class="iconButton">Palette</span> exports the palette of all palette swatches to
+	your clipboard if you'd like to use them elsewhere. Note that using the eyedropper tool to select one
+	of these swatches unfortunately just sets the hex color value for that user property, and doesn't reference
+	this palette property in the generated CSS.
 </p>
 
 <p>
@@ -148,5 +163,5 @@
 
 <p>
 	Note that as currently implemented, this palette tool only creates tints and shades, it doesn't
-	create any "tones" by mixing middle gray.
+	create any "tones" (mixing middle gray rather than pure black or pure white).
 </p>

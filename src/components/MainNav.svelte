@@ -99,6 +99,7 @@
 			data-target="stylesheet"
 			on:click={toggleStylesheet}>&nbsp</a
 		>
+		<h1>Custom User Properties</h1>
 		<pre class="textBox">{$userCSS}</pre>
 		<footer>
 			<button data-target="stylesheet" on:click={userToClipboard}> Copy to Clipboard </button>
@@ -129,6 +130,7 @@
 			data-target="palette-modal"
 			on:click={togglePalette}>&nbsp</a
 		>
+		<h1>Color Palette Properties</h1>
 		<pre class="textBox">{$paletteCSS}</pre>
 		<footer>
 			<button data-target="palette-modal" on:click={paletteToClipboard}> Copy to Clipboard </button>

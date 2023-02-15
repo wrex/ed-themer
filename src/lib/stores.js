@@ -88,7 +88,7 @@ export const modal = writable({
 
 /* Initialize swatches with grays and tints/shades of one random color */
 export const swatches = writable([
-	{ clr: '#888888', label: 'grays' },
+	{ clr: '#333333', label: 'grays' },
 	{ clr: randomColor(), label: 'swatch1' }
 ]);
 
