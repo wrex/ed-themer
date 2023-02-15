@@ -46,7 +46,7 @@
 
 #palette {
 	grid-area: palette;
-	overflow-y: scroll;
+	overflow: scroll;
 	border-top: 1px solid white;
 	padding-block: 1rem;
 	max-height: 30vh;

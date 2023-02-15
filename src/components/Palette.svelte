@@ -10,6 +10,7 @@
 		tetradicClr
 	} from '$lib/colorUtils';
 	import { modal, swatches, paletteCSS } from '$lib/stores';
+	import { slugify } from '$lib/utils';
 
 	/* Last color row used for algorithmic additions */
 	$: lastColor = $swatches[$swatches.length - 1].clr;
@@ -22,21 +23,21 @@
 		const swatchCss = (clr, label) => {
 			/* brightest tint to darkest shade */
 			return `
---${label}-0: ${tint(clr, 0.91)}
---${label}-1: ${tint(clr, 0.78)}
---${label}-2: ${tint(clr, 0.65)}
---${label}-3: ${tint(clr, 0.52)}
---${label}-4: ${tint(clr, 0.39)}
---${label}-5: ${tint(clr, 0.26)}
---${label}-6: ${tint(clr, 0.13)}
---${label}-7: ${clr}
---${label}-8: ${shade(clr, 0.13)}
---${label}-9: ${shade(clr, 0.26)}
---${label}-10: ${shade(clr, 0.39)}
---${label}-11: ${shade(clr, 0.52)}
---${label}-12: ${shade(clr, 0.65)}
---${label}-13: ${shade(clr, 0.78)}
---${label}-14: ${shade(clr, 0.91)}
+--${slugify(label)}-0: ${tint(clr, 0.91)}
+--${slugify(label)}-1: ${tint(clr, 0.78)}
+--${slugify(label)}-2: ${tint(clr, 0.65)}
+--${slugify(label)}-3: ${tint(clr, 0.52)}
+--${slugify(label)}-4: ${tint(clr, 0.39)}
+--${slugify(label)}-5: ${tint(clr, 0.26)}
+--${slugify(label)}-6: ${tint(clr, 0.13)}
+--${slugify(label)}-7: ${clr}
+--${slugify(label)}-8: ${shade(clr, 0.13)}
+--${slugify(label)}-9: ${shade(clr, 0.26)}
+--${slugify(label)}-10: ${shade(clr, 0.39)}
+--${slugify(label)}-11: ${shade(clr, 0.52)}
+--${slugify(label)}-12: ${shade(clr, 0.65)}
+--${slugify(label)}-13: ${shade(clr, 0.78)}
+--${slugify(label)}-14: ${shade(clr, 0.91)}
 			`;
 		};
 
@@ -112,19 +113,17 @@
 				<option value="tetradic">Tetradic (+3)</option>
 			</select>
 		</div>
-		<!-- <p>
-			Bottom color used as starting point when adding algorithmic swatch rows (complementary,
-			analogous, triadic, tetradic).
-		</p> -->
 	</div>
 	<div class="swatchbars">
-		<!-- <header><strong>PALETTE:</strong> Click center swatches to change color</header> -->
-		<div class="swatchbar">
-			{#each $swatches as swatch, i}
-				<PaletteBar id={swatch.label} bind:baseClr={swatch.clr} />
+		{#each $swatches as swatch, i}
+			<div class="grid">
+				<div class="bar">
+					<PaletteBar id={swatch.label} bind:baseClr={swatch.clr} />
+				</div>
+				<input type="text" bind:value={swatch.label} />
 				<button on:click={() => delRow(i)} disabled={i === 0}>-</button>
-			{/each}
-		</div>
+			</div>
+		{/each}
 	</div>
 </div>
 
@@ -134,8 +133,17 @@
 		gap: 1em;
 	}
 
+	.grid {
+		grid-template-columns: 600px 1fr 1fr;
+		align-items: center;
+	}
+
 	.left-controls {
+		margin-block: 0;
+		padding-top: 20px;
+		padding-right: 1em;
 		min-width: 12rem;
+		border-right: 1px solid white;
 	}
 
 	.left-controls button {
@@ -143,6 +151,9 @@
 		font-size: 1rem;
 	}
 
+	.addrows {
+		margin-top: 36px;
+	}
 	.left-controls .addrows button {
 		max-width: fit-content;
 	}
@@ -153,20 +164,15 @@
 		flex-basis: 2;
 	}
 
-	.swatchbars {
-		width: 100%;
-		padding-left: 2rem;
+	.swatchbars button {
+		max-width: 4rem;
+		margin-block: 10px;
+		padding: 0.3rem 0.5rem;
 	}
 
-	.swatchbar {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 1em;
-	}
-	.swatchbar button {
-		width: fit-content;
-		margin-block: 0;
-		padding: 0.3rem 0.5rem;
+	.swatchbars input {
+		margin-block: 10px;
+		min-width: 100px;
 	}
 
 	.addrows {
