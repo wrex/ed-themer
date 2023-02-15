@@ -5,6 +5,7 @@
 	import Dashboard from '../components/Dashboard.svelte';
 	import Review from '../components/Review.svelte';
 	import Palette from '../components/Palette.svelte';
+	import PaletteTools from '../components/PaletteTools.svelte';
 
 	import { userProps, sample } from '$lib/stores.js';
 
@@ -53,6 +54,10 @@
 	{/if}
 </main>
 
-<footer id="palette">
+<div id="paletteTools">
+	<PaletteTools />
+</div>
+
+<div id="palette">
 	<Palette />
-</footer>
+</div>

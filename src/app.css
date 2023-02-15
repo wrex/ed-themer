@@ -1,11 +1,11 @@
 .app-container {
 	display: grid;
 	height: 100vh;
-	grid-template-columns: auto 1fr;
+	grid-template-columns: 14rem 1fr;
 	grid-template-areas:
-		'nav         nav'
-		'user-colors samples'
-		'palette     palette';
+		'nav          nav'
+		'user-colors  samples'
+		'paletteTools palette';
 }
 
 .app-container > * {
@@ -42,6 +42,13 @@
 	grid-area: samples;
 	overflow-y: scroll;
 	background-color: var(--USER-surface-1);
+}
+
+#paletteTools {
+	grid-area: paletteTools;
+	border-top: 1px solid white;
+	border-right: 1px dashed gray;
+	padding-block: 1rem;
 }
 
 #palette {

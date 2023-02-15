@@ -16,7 +16,6 @@
 </script>
 
 <div class="palette">
-	<PaletteTools />
 	<div class="swatchbars">
 		{#each $swatches as swatch, i}
 			<div class="grid">
