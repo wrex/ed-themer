@@ -1,92 +1,7 @@
 <script>
 	import PaletteBar from './PaletteBar.svelte';
-	import {
-		tint,
-		shade,
-		randomColor,
-		complClr,
-		anlgClr,
-		triadicClr,
-		tetradicClr
-	} from '$lib/colorUtils';
-	import { modal, swatches, paletteCSS } from '$lib/stores';
-	import { slugify } from '$lib/utils';
-
-	/* Last color row used for algorithmic additions */
-	$: lastColor = $swatches[$swatches.length - 1].clr;
-
-	/* Default is to add a custom (random) color */
-	let colorScheme = 'custom';
-
-	/* Create CSS properties from swatches */
-	const genPaletteCSS = (swatches) => {
-		const swatchCss = (clr, label) => {
-			/* brightest tint to darkest shade */
-			return `
---${slugify(label)}-0: ${tint(clr, 0.91)}
---${slugify(label)}-1: ${tint(clr, 0.78)}
---${slugify(label)}-2: ${tint(clr, 0.65)}
---${slugify(label)}-3: ${tint(clr, 0.52)}
---${slugify(label)}-4: ${tint(clr, 0.39)}
---${slugify(label)}-5: ${tint(clr, 0.26)}
---${slugify(label)}-6: ${tint(clr, 0.13)}
---${slugify(label)}-7: ${clr}
---${slugify(label)}-8: ${shade(clr, 0.13)}
---${slugify(label)}-9: ${shade(clr, 0.26)}
---${slugify(label)}-10: ${shade(clr, 0.39)}
---${slugify(label)}-11: ${shade(clr, 0.52)}
---${slugify(label)}-12: ${shade(clr, 0.65)}
---${slugify(label)}-13: ${shade(clr, 0.78)}
---${slugify(label)}-14: ${shade(clr, 0.91)}
-			`;
-		};
-
-		let CSS = '';
-		swatches.forEach((swatch) => {
-			CSS += swatchCss(swatch.clr, swatch.label);
-		});
-		return CSS;
-	};
-
-	/**
-	 * exportPalette - display a modal with all the color swatches
-	 */
-	const exportPalette = () => {
-		$paletteCSS = genPaletteCSS($swatches);
-		$modal.paletteStyles = !$modal.paletteStyles;
-	};
-
-	/**
-	 * addSwatches - add additional swatches to array
-	 * @param {string[]} colors - colors to add
-	 * @return void
-	 */
-	const addSwatches = (colors) => {
-		colors.forEach((color) => {
-			$swatches = [
-				...$swatches,
-				{
-					clr: color,
-					label: `swatch${$swatches.length}`
-				}
-			];
-		});
-	};
-
-	const addRow = () => {
-		if ($swatches.length > 20) return;
-		if (colorScheme === 'custom') {
-			addSwatches([randomColor()]);
-		} else if (colorScheme === 'complementary') {
-			addSwatches([complClr(lastColor)]);
-		} else if (colorScheme === 'analogous') {
-			addSwatches(anlgClr(lastColor));
-		} else if (colorScheme === 'triadic') {
-			addSwatches(triadicClr(lastColor));
-		} else if (colorScheme === 'tetradic') {
-			addSwatches(tetradicClr(lastColor));
-		}
-	};
+	import { swatches } from '$lib/stores';
+	import PaletteTools from './PaletteTools.svelte';
 
 	/**
 	 * delRow - used by "-" button to delete a swatch row
@@ -101,19 +16,7 @@
 </script>
 
 <div class="palette">
-	<div class="left-controls">
-		<button on:click={exportPalette}>Palette</button>
-		<div class="addrows">
-			<button on:click={addRow}>+</button>
-			<select bind:value={colorScheme}>
-				<option value="custom">Custom (+1)</option>
-				<option value="complementary">Complementary (+1)</option>
-				<option value="analogous">Analogous (+2)</option>
-				<option value="triadic">Triadic (+2)</option>
-				<option value="tetradic">Tetradic (+3)</option>
-			</select>
-		</div>
-	</div>
+	<PaletteTools />
 	<div class="swatchbars">
 		{#each $swatches as swatch, i}
 			<div class="grid">
