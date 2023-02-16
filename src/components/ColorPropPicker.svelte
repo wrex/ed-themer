@@ -4,21 +4,20 @@
 	 */
 	export let id;
 
-	import { allPropNames } from '$lib/utils';
+	import { allPropNames, slugify } from '$lib/utils';
 	import { userProps, resetCallbacks } from '$lib/stores';
 
-	/**
-	 * @type string;
-	 */
-	let selected;
+	/**  @type string; */
+	let userPropSelector;
 
 	/* If user reloads defaults, set select to "custom" */
 	resetCallbacks.push(() => {
-		selected = '';
+		userPropSelector = '';
 	});
 
 	const pickerChange = () => {
-		selected = '';
+		userPropSelector = '';
+		palettePropSelector = '';
 		let thisPropName = `--USER-${id}`;
 		let thisColor = $userProps.user[thisPropName].clr;
 
@@ -33,9 +32,42 @@
 		});
 	};
 
-	const selectorChange = () => {
-		$userProps.user[`--USER-${id}`].clr = $userProps.user[`--USER-${selected}`].clr;
-		$userProps.user[`--USER-${id}`].ref = `--USER-${selected}`;
+	const userPropChange = () => {
+		$userProps.user[`--USER-${id}`].clr = $userProps.user[`--USER-${userPropSelector}`].clr;
+		$userProps.user[`--USER-${id}`].ref = `--USER-${userPropSelector}`;
+		palettePropSelector = '';
+	};
+
+	/**  @type string; */
+	let palettePropSelector = '';
+
+	/** @type {string[]} */
+	let paletteNames = [];
+
+	$: paletteNames = $userProps.palette.reduce(
+		/**
+		 * @param {string[]} acc
+		 * @param {{label: string, rgb: string, props: {[key: string]: string}}} cur
+		 */
+		(acc, cur) => acc.concat(Object.keys(cur.props).map((suffix) => `${cur.label}${suffix}`)),
+		[]
+	);
+
+	const palettePropChange = () => {
+		// parse strings like "really-long-label-suffix"
+		const label = palettePropSelector.replace(/-[^-]+$/, '');
+
+		const temp = palettePropSelector.match(/-[^-]+$/);
+		const suffix = temp ? temp[0] : '';
+
+		const found = $userProps.palette.find(
+			/** @param {{label: string, rgb: string, props: {[key: string]: string }}} palette */
+			(palette) => palette.label === label
+		);
+
+		$userProps.user[`--USER-${id}`].clr = found.rgb;
+		$userProps.user[`--USER-${id}`].ref = `--${label}${suffix}`;
+		userPropSelector = '';
 	};
 </script>
 
@@ -48,10 +80,16 @@
 		bind:value={$userProps.user[`--USER-${id}`].clr}
 		on:change={pickerChange}
 	/>
-	<select bind:value={selected} on:change={selectorChange}>
-		<option value="" disabled selected>Custom</option>
+	<select bind:value={userPropSelector} on:change={userPropChange}>
+		<option value="" disabled selected>User Prop</option>
 		{#each allPropNames.filter((name) => name !== id) as name}
 			<option>{name}</option>
+		{/each}
+	</select>
+	<select bind:value={palettePropSelector} on:change={palettePropChange}>
+		<option value="" disabled selected>Palette Prop</option>
+		{#each paletteNames as name}
+			<option>{slugify(name)}</option>
 		{/each}
 	</select>
 </article>
@@ -68,6 +106,7 @@
 		padding: 0.25em;
 		height: 2em;
 	}
+
 	select {
 		display: inline-block;
 		font-size: small;
