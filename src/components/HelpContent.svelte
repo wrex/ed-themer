@@ -54,8 +54,12 @@
 	<ReloadIcon />
 </button>
 <p>
-	resets all of the user styles on the left to the defaults. Note that this does <em>not</em> remove
+	Resets all of the user styles on the left to the defaults. Note that this does <em>not</em> remove
 	or reset any of your palette swatches.
+</p>
+<p>
+	<mark>WARNING:</mark> There is no confirmation dialog with the reset button. Any changes you've made
+	or swatches you've added will be lost as soon as you click the button.
 </p>
 
 <button class="iconButton">

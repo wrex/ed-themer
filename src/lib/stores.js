@@ -64,6 +64,14 @@ const defaultProps = {
 
 export const userProps = writable(JSON.parse(JSON.stringify(defaultProps)));
 
+/* Initialize swatches with grays and tints/shades of one random color */
+const defaultSwatches = [
+	{ clr: '#333333', label: 'gray' },
+	{ clr: randomColor(), label: 'swatch1' }
+];
+
+export const swatches = writable(JSON.parse(JSON.stringify(defaultSwatches)));
+
 /**
  * @type Function[];
  */
@@ -74,6 +82,7 @@ export const resetProps = () => {
 		callback();
 	});
 	userProps.set(JSON.parse(JSON.stringify(defaultProps)));
+	swatches.set(JSON.parse(JSON.stringify(defaultSwatches)));
 };
 
 export const sample = writable('surfaces');
@@ -85,12 +94,6 @@ export const modal = writable({
 	paletteStyles: false,
 	help: false
 });
-
-/* Initialize swatches with grays and tints/shades of one random color */
-export const swatches = writable([
-	{ clr: '#333333', label: 'gray' },
-	{ clr: randomColor(), label: 'swatch1' }
-]);
 
 export const userCSS = writable('');
 
