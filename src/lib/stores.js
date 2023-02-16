@@ -37,8 +37,8 @@ export const makeTints = (clr) => {
 /**
  * @type {{user: UserPropDefn, palette: PaletteEntry[]}}
  */
-let newDefaultProps = { user: {}, palette: [] };
-newDefaultProps.user = {
+let defaultProps = { user: {}, palette: [] };
+defaultProps.user = {
 	'--USER-surface-1': { clr: '#151515', ref: 'custom' },
 	'--USER-surface-2': { clr: '#282828', ref: 'custom' },
 	'--USER-surface-3': { clr: '#303030', ref: 'custom' },
@@ -73,14 +73,14 @@ newDefaultProps.user = {
 	['gray', '#333333'],
 	['swatch1', randomColor()]
 ].forEach(([label, clr]) => {
-	newDefaultProps.palette.push({
+	defaultProps.palette.push({
 		label: label,
 		rgb: clr,
 		props: makeTints(clr)
 	});
 });
 
-export const newUserProps = writable(JSON.parse(JSON.stringify(newDefaultProps)));
+export const userProps = writable(JSON.parse(JSON.stringify(defaultProps)));
 
 /**
  * @type Function[];
@@ -91,7 +91,7 @@ export const resetProps = () => {
 	resetCallbacks.forEach((callback) => {
 		callback();
 	});
-	newUserProps.set(JSON.parse(JSON.stringify(newDefaultProps)));
+	userProps.set(JSON.parse(JSON.stringify(defaultProps)));
 };
 
 export const sample = writable('surfaces');

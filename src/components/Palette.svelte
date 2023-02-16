@@ -1,22 +1,22 @@
 <script>
 	import PaletteBar from './PaletteBar.svelte';
-	import { newUserProps } from '$lib/stores';
+	import { userProps } from '$lib/stores';
 
 	/**
 	 * delRow - used by "-" button to delete a swatch row
 	 * @param {number} index
 	 */
 	const delRow = (index) => {
-		let copy = [...$newUserProps.palette];
+		let copy = [...$userProps.palette];
 		copy.splice(index, 1); // modifies in place
 		// Must assign to palette this way to ensure reactivity
-		$newUserProps.palette = [...copy];
+		$userProps.palette = [...copy];
 	};
 </script>
 
 <div class="palette">
 	<div class="swatchbars">
-		{#each $newUserProps.palette as row, i}
+		{#each $userProps.palette as row, i}
 			<div class="grid">
 				<div class="bar">
 					<PaletteBar id={row.label} bind:baseClr={row.rgb} />

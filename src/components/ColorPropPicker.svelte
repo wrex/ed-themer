@@ -5,14 +5,14 @@
 	export let id;
 
 	import { allPropNames } from '$lib/utils';
-	import { newUserProps, resetCallbacks } from '$lib/stores';
+	import { userProps, resetCallbacks } from '$lib/stores';
 
 	/**
 	 * @type string;
 	 */
 	let selected;
 
-	/* If user reloads defaults, set select to "Custom" */
+	/* If user reloads defaults, set select to "custom" */
 	resetCallbacks.push(() => {
 		selected = '';
 	});
@@ -20,22 +20,22 @@
 	const pickerChange = () => {
 		selected = '';
 		let thisPropName = `--USER-${id}`;
-		let thisColor = $newUserProps.user[thisPropName].clr;
+		let thisColor = $userProps.user[thisPropName].clr;
 
-		$newUserProps.user[thisPropName].ref = 'Custom';
+		$userProps.user[thisPropName].ref = 'custom';
 
 		/* update any other pickers referencing this one */
-		const refs = Object.keys($newUserProps.user).filter(
-			(key) => $newUserProps.user[key].ref === thisPropName
+		const refs = Object.keys($userProps.user).filter(
+			(key) => $userProps.user[key].ref === thisPropName
 		);
 		refs.forEach((ref) => {
-			$newUserProps.user[ref].clr = thisColor;
+			$userProps.user[ref].clr = thisColor;
 		});
 	};
 
 	const selectorChange = () => {
-		$newUserProps.user[`--USER-${id}`].clr = $newUserProps.user[`--USER-${selected}`].clr;
-		$newUserProps.user[`--USER-${id}`].ref = `--USER-${selected}`;
+		$userProps.user[`--USER-${id}`].clr = $userProps.user[`--USER-${selected}`].clr;
+		$userProps.user[`--USER-${id}`].ref = `--USER-${selected}`;
 	};
 </script>
 
@@ -45,7 +45,7 @@
 		type="color"
 		name={id}
 		{id}
-		bind:value={$newUserProps.user[`--USER-${id}`].clr}
+		bind:value={$userProps.user[`--USER-${id}`].clr}
 		on:change={pickerChange}
 	/>
 	<select bind:value={selected} on:change={selectorChange}>

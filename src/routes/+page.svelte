@@ -7,36 +7,36 @@
 	import Palette from '../components/Palette.svelte';
 	import PaletteTools from '../components/PaletteTools.svelte';
 
-	import { newUserProps, sample } from '$lib/stores.js';
+	import { userProps, sample } from '$lib/stores.js';
 
 	$: styleString = `
-  --USER-surface-1: ${$newUserProps.user['--USER-surface-1'].clr};
-  --USER-surface-2: ${$newUserProps.user['--USER-surface-2'].clr};
-  --USER-surface-3: ${$newUserProps.user['--USER-surface-3'].clr};
-  --USER-surface-4: ${$newUserProps.user['--USER-surface-4'].clr};
-  --USER-surface-inv: ${$newUserProps.user['--USER-surface-inv'].clr};
-  --USER-text: ${$newUserProps.user['--USER-text'].clr};
-  --USER-text-inv: ${$newUserProps.user['--USER-text-inv'].clr};
-  --USER-text-hl: ${$newUserProps.user['--USER-text-hl'].clr};
-  --USER-text-grayed: ${$newUserProps.user['--USER-text-grayed'].clr};
-  --USER-brand: ${$newUserProps.user['--USER-brand'].clr};
-  --USER-progress: ${$newUserProps.user['--USER-progress'].clr};
-  --USER-success: ${$newUserProps.user['--USER-success'].clr};
-  --USER-alert: ${$newUserProps.user['--USER-alert'].clr};
-  --USER-radical: ${$newUserProps.user['--USER-radical'].clr};
-  --USER-kanji: ${$newUserProps.user['--USER-kanji'].clr};
-  --USER-vocab: ${$newUserProps.user['--USER-vocab'].clr};
-  --USER-apprentice: ${$newUserProps.user['--USER-apprentice'].clr};
-  --USER-guru: ${$newUserProps.user['--USER-guru'].clr};
-  --USER-master: ${$newUserProps.user['--USER-master'].clr};
-  --USER-enlightened: ${$newUserProps.user['--USER-enlightened'].clr};
-  --USER-burned: ${$newUserProps.user['--USER-burned'].clr};
-  --USER-lesson: ${$newUserProps.user['--USER-lesson'].clr};
-  --USER-review: ${$newUserProps.user['--USER-review'].clr};
-  --USER-correct: ${$newUserProps.user['--USER-correct'].clr};
-  --USER-incorrect: ${$newUserProps.user['--USER-incorrect'].clr};
-  --USER-meaning: ${$newUserProps.user['--USER-meaning'].clr};
-  --USER-reading: ${$newUserProps.user['--USER-reading'].clr};
+  --USER-surface-1: ${$userProps.user['--USER-surface-1'].clr};
+  --USER-surface-2: ${$userProps.user['--USER-surface-2'].clr};
+  --USER-surface-3: ${$userProps.user['--USER-surface-3'].clr};
+  --USER-surface-4: ${$userProps.user['--USER-surface-4'].clr};
+  --USER-surface-inv: ${$userProps.user['--USER-surface-inv'].clr};
+  --USER-text: ${$userProps.user['--USER-text'].clr};
+  --USER-text-inv: ${$userProps.user['--USER-text-inv'].clr};
+  --USER-text-hl: ${$userProps.user['--USER-text-hl'].clr};
+  --USER-text-grayed: ${$userProps.user['--USER-text-grayed'].clr};
+  --USER-brand: ${$userProps.user['--USER-brand'].clr};
+  --USER-progress: ${$userProps.user['--USER-progress'].clr};
+  --USER-success: ${$userProps.user['--USER-success'].clr};
+  --USER-alert: ${$userProps.user['--USER-alert'].clr};
+  --USER-radical: ${$userProps.user['--USER-radical'].clr};
+  --USER-kanji: ${$userProps.user['--USER-kanji'].clr};
+  --USER-vocab: ${$userProps.user['--USER-vocab'].clr};
+  --USER-apprentice: ${$userProps.user['--USER-apprentice'].clr};
+  --USER-guru: ${$userProps.user['--USER-guru'].clr};
+  --USER-master: ${$userProps.user['--USER-master'].clr};
+  --USER-enlightened: ${$userProps.user['--USER-enlightened'].clr};
+  --USER-burned: ${$userProps.user['--USER-burned'].clr};
+  --USER-lesson: ${$userProps.user['--USER-lesson'].clr};
+  --USER-review: ${$userProps.user['--USER-review'].clr};
+  --USER-correct: ${$userProps.user['--USER-correct'].clr};
+  --USER-incorrect: ${$userProps.user['--USER-incorrect'].clr};
+  --USER-meaning: ${$userProps.user['--USER-meaning'].clr};
+  --USER-reading: ${$userProps.user['--USER-reading'].clr};
   `;
 </script>
 

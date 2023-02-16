@@ -1,7 +1,7 @@
 <script>
 	import {
 		sample,
-		newUserProps,
+		userProps,
 		resetProps,
 		expandControls,
 		modal,
@@ -32,7 +32,7 @@
 
 	const genPaletteCSS = () => {
 		let CSS = '';
-		$newUserProps.palette.forEach(({ label, rgb, prop }) => {
+		$userProps.palette.forEach(({ label, rgb, prop }) => {
 			const tints = makeTints(rgb);
 			Object.keys(tints).forEach((suffix) => {
 				CSS += `  --${label}${suffix}: ${tints[suffix]};\r\n`;
@@ -48,8 +48,8 @@
 		let CSS = '';
 		allPropNames.forEach((name) => {
 			const thisEntry = `--USER-${name}`;
-			const refVal = $newUserProps.user[thisEntry].ref;
-			const clrVal = $newUserProps.user[thisEntry].clr;
+			const refVal = $userProps.user[thisEntry].ref;
+			const clrVal = $userProps.user[thisEntry].clr;
 			if (refVal === 'custom') {
 				CSS += `  ${thisEntry}: ${clrVal}; \r\n`;
 			} else {

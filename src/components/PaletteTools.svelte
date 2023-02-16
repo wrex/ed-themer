@@ -1,9 +1,9 @@
 <script>
-	import { colorScheme, newUserProps, makeTints, modal } from '$lib/stores';
+	import { colorScheme, userProps, makeTints, modal } from '$lib/stores';
 	import { randomColor, complClr, anlgClr, triadicClr, tetradicClr } from '$lib/colorUtils';
 
 	/* Last color row used for algorithmic additions */
-	$: lastColor = $newUserProps.palette[$newUserProps.palette.length - 1].rgb;
+	$: lastColor = $userProps.palette[$userProps.palette.length - 1].rgb;
 
 	/**
 	 * addSwatches - add additional swatches to array
@@ -12,10 +12,10 @@
 	 */
 	const addSwatches = (colors) => {
 		colors.forEach((color) => {
-			$newUserProps.palette = [
-				...$newUserProps.palette,
+			$userProps.palette = [
+				...$userProps.palette,
 				{
-					label: `swatch${$newUserProps.palette.length}`,
+					label: `swatch${$userProps.palette.length}`,
 					rgb: color,
 					props: makeTints(color)
 				}
@@ -24,7 +24,7 @@
 	};
 
 	const addRow = () => {
-		if ($newUserProps.palette.length > 20) return;
+		if ($userProps.palette.length > 20) return;
 		if ($colorScheme === 'custom') {
 			addSwatches([randomColor()]);
 		} else if ($colorScheme === 'complementary') {
