@@ -53,6 +53,10 @@ export const shade = (clr, factor) => {
 	return `#${pad2(rt)}${pad2(gt)}${pad2(bt)}`;
 };
 
+/**
+ * randomColor - generate a random rgb color
+ * @returns {string} (seven byte hex, e.g. '#deadbf')
+ */
 export const randomColor = () => {
 	const r = Math.floor(Math.random() * 256);
 	const g = Math.floor(Math.random() * 256);

@@ -14,7 +14,7 @@
 
 <div id="user-colors">
 	{#if $expandControls}
-		<h3>Props</h3>
+		<h3>Properties</h3>
 
 		<details>
 			<summary>Surfaces</summary>

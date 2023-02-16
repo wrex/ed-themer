@@ -1,7 +1,7 @@
 <script>
 	import {
 		sample,
-		userProps,
+		newUserProps,
 		resetProps,
 		expandControls,
 		modal,
@@ -74,8 +74,8 @@
 		let CSS = '';
 		allPropNames.forEach((name) => {
 			const thisEntry = `--USER-${name}`;
-			const refVal = $userProps.clrRef[thisEntry];
-			const clrVal = $userProps.clr[thisEntry];
+			const refVal = $newUserProps.user[thisEntry].ref;
+			const clrVal = $newUserProps.user[thisEntry].clr;
 			if (refVal === 'Custom') {
 				CSS += `  ${thisEntry}: ${clrVal}; \r\n`;
 			} else {
