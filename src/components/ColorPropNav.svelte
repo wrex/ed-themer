@@ -9,11 +9,11 @@
 		srsNames,
 		reviewNames
 	} from '$lib/utils';
-	import { sidebarExpanded } from '$lib/stores';
+	import { expandControls } from '$lib/stores';
 </script>
 
 <div id="user-colors">
-	{#if $sidebarExpanded}
+	{#if $expandControls}
 		<h3>Props</h3>
 
 		<details>

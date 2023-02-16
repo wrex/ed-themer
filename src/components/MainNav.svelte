@@ -3,7 +3,7 @@
 		sample,
 		userProps,
 		resetProps,
-		sidebarExpanded,
+		expandControls,
 		modal,
 		userCSS,
 		swatches
@@ -27,7 +27,7 @@
 	};
 
 	const toggleSidebar = () => {
-		$sidebarExpanded = !$sidebarExpanded;
+		$expandControls = !$expandControls;
 	};
 
 	/**
@@ -103,7 +103,7 @@
 				<option value="dashboard">Dashboard</option>
 			</select>
 		</li>
-		{#if $sidebarExpanded}
+		{#if $expandControls}
 			<li>
 				<button class="iconButton" on:click={toggleSidebar}>
 					<CollapseLeftIcon />

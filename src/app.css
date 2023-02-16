@@ -1,11 +1,21 @@
 .app-container {
+	--props-min-width: 12rem;
+	--props-max-width: 12rem;
+	--palette-max-height: 425px;
 	display: grid;
 	height: 100vh;
-	grid-template-columns: 12rem 1fr;
+	grid-template-columns: min-content auto 1fr;
+	grid-template-rows: auto 3fr min-content;
 	grid-template-areas:
 		'nav          nav'
 		'user-colors  samples'
 		'paletteTools palette';
+}
+
+.app-container.collapsed {
+	--props-min-width: 10px;
+	--props-max-width: 10px;
+	--palette-max-height: 10px;
 }
 
 .app-container > * {
@@ -29,6 +39,8 @@
 	overflow-y: scroll;
 	border-right: 1px solid white;
 	padding: 2em 0.5em;
+	min-width: var(--props-min-width);
+	max-width: var(--props-max-width);
 }
 
 #user-colors label {
@@ -48,6 +60,8 @@
 	grid-area: paletteTools;
 	border-top: 1px solid white;
 	padding-top: 30px;
+	max-height: var(--palette-max-height);
+	overflow: hidden;
 }
 
 #palette {
@@ -55,8 +69,7 @@
 	grid-area: palette;
 	overflow-y: scroll;
 	border-top: 1px solid white;
-	max-height: 280px;
-	min-height: 180px;
+	max-height: var(--palette-max-height);
 }
 
 #samples input {

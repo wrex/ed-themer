@@ -48,7 +48,10 @@
 <button class="iconButton">
 	<CollapseLeftIcon />
 </button>
-<p>This button collapses the left panel to give you more screen real estate.</p>
+<p>
+	This button toggles the display of the control panels (props on the left, palette below) to let
+	you focus on the different sample screens.
+</p>
 
 <button class="iconButton">
 	<ReloadIcon />

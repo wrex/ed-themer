@@ -87,7 +87,7 @@ export const resetProps = () => {
 
 export const sample = writable('surfaces');
 
-export const sidebarExpanded = writable(true);
+export const expandControls = writable(true);
 
 export const modal = writable({
 	userStyles: false,
