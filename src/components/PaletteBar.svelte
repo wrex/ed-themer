@@ -43,12 +43,13 @@
 
 <style>
 	.swatchbar {
-		display: flex;
-		justify-content: space-between;
+		display: grid;
+		grid-template-columns: repeat(15, auto);
+		justify-content: stretch;
 		align-items: center;
 	}
 	.swatchbar > input {
-		width: 50vw;
+		min-width: 50px;
 		margin: 0;
 		padding: 0.5em;
 	}
@@ -56,7 +57,7 @@
 	.swatch {
 		border: 1px solid var(--baseClr);
 		height: 50px;
-		width: 100%;
+		padding-inline: 1em;
 		display: flex;
 		justify-content: center;
 		align-items: center;

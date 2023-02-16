@@ -36,7 +36,7 @@
 	}
 
 	.grid {
-		grid-template-columns: 600px 1fr 1fr;
+		grid-template-columns: 5fr 1fr auto;
 		align-items: center;
 	}
 
