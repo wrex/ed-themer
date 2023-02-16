@@ -30,9 +30,6 @@
 		$sidebarExpanded = !$sidebarExpanded;
 	};
 
-	/* Last color row used for algorithmic additions */
-	$: lastColor = $swatches[$swatches.length - 1].clr;
-
 	/**
 	 * genPaletteCSS - generate custom props for Palette
 	 * @param {{clr: string, label: string}[]} swatches

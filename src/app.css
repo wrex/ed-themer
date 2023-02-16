@@ -1,7 +1,7 @@
 .app-container {
 	display: grid;
 	height: 100vh;
-	grid-template-columns: 14rem 1fr;
+	grid-template-columns: 12rem 1fr;
 	grid-template-areas:
 		'nav          nav'
 		'user-colors  samples'
@@ -47,11 +47,11 @@
 #paletteTools {
 	grid-area: paletteTools;
 	border-top: 1px solid white;
-	/* border-right: 1px dashed gray; */
-	padding-block: 1rem;
+	padding-top: 30px;
 }
 
 #palette {
+	padding-top: 14px;
 	grid-area: palette;
 	overflow-y: scroll;
 	border-top: 1px solid white;

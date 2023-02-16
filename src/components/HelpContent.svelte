@@ -127,77 +127,72 @@
 	currently displayed on your screen.
 </p>
 
-<h3>Color palette</h3>
+<h2>Color palette</h2>
 
 <p>
 	The bottom section of the screen allows you to generate a consistent palette of related colors.
-	The controls on the left allow you to export the current palette, and to add more swatch rows.
+	The controls on the left allow you to add more rows of swatches.
 </p>
-
 <p>
-	The bottom right contains rows of swatches to develop your color scheme. Initially, this section
-	displays one row of gray swatches (centered on "#333333"), and one row of a random hue are
-	displayed. Each row contains 15 swatches: seven tints, the user selected color in the middle, and
-	seven shades. Swatches are ordered from lightest to darkest.
+	Initially, two rows of swatches are displayed: one row of gray swatches (centered on "#333333"),
+	and one row of a random hue Each row contains 15 swatches: seven tints, the user selected color in
+	the middle, and seven shades. Swatches are ordered from lightest to darkest.
 </p>
-
 <p>
-	Each tint/shade mixes an increasing amount of white or black to the central color, from 13% in the
-	first step, to 91% in the last step.
+	Each tint mixes a decreasing amount of white, from 91% white in the leftmost swatch, to 13% in the
+	swatch just to the left of the central color picker. Similarly, each shade mixes from 13% to 91%
+	of black (in 13% increments).
 </p>
 
 <p>
 	The center of each row is a standard color picker: adjusting the color of the center swatch will
-	change the tints and shades shown to the right and left of the color picker as well.
-</p>
-
-<p>
-	<button class="iconButton">-</button> removes any given row of swatches. (The top row cannot be removed).
-</p>
-
-<p>
-	There is also a text input box that allows you to enter a meaningful name to any row of swatches
-	prior to export.
+	change al tints and shades of that row as well.
 </p>
 
 <h3>Palette controls</h3>
 
 <p>
-	<button class="iconButton">Palette</button> exports the palette of all palette swatches to your clipboard
-	if you'd like to use them elsewhere. Note that using the eyedropper tool to select one of these swatches
-	unfortunately just sets the hex color value for that user property, and doesn't reference this palette
-	property in the generated CSS.
+	In the lower left of your screen, the dropdown selector and button below it add between 1 and 3
+	additional rows of swatches according to various schemes:
 </p>
-
-<p>
-	<button class="iconButton">+</button> adds at least one row of swatches (up to a maximum of twenty
-	rows). Each row contains seven tints and seven shades on either side of the central color picker.
-</p>
-
-<p>The dropdown controls how many rows are created and the initial colors for those rows:</p>
 
 <dl>
-	<dt>Custom (+1)</dt>
-	<dd>Creates a single row with a random initial color.</dd>
+	<dt>Custom</dt>
+	<dd>Creates a single row with a random initial hue.</dd>
 
-	<dt>Complementary (+1)</dt>
+	<dt>Complementary</dt>
 	<dd>
-		Also creates a single row, but chooses a hue that is the complement (180° opposite on the color
-		wheel) of the center color of the current bottom row.
+		Also creates a single row, but chooses a hue that is the complement (180° opposite hue) of the
+		current bottom row's hue.
 	</dd>
 
-	<dt>Analagous (+2)</dt>
-	<dd>Generates two more rows, each hue 30° away ("adjacent" to) the bottom color's hue.</dd>
+	<dt>Analogous</dt>
+	<dd>Generates two more rows, each hue 30° away ("adjacent" to) the bottom row's hue.</dd>
 
-	<dt>Triadic (+2)</dt>
+	<dt>Triadic</dt>
 	<dd>
 		Generates two more rows, each 120° away from the bottom hue. This tends to generate a very
 		balanced color scheme.
 	</dd>
 
-	<dt>Tetradic (+3)</dt>
+	<dt>Tetradic</dt>
 	<dd>Generates three more rows, each 90° away from each other.</dd>
 </dl>
+
+<p>
+	The text input box to the right of each row allows you to specify a meaningful name for that row
+	of swatches prior to export.
+</p>
+
+<p>
+	Note that you can still change the color of any given row by clicking on the central color picker.
+	It isn't necessary to select "Custom" to allow a row to be subsequently modified.
+</p>
+
+<p>
+	<button class="iconButton">-</button> Removes that row of swatches. (The top row cannot be removed,
+	and there is no "undelete" functionality).
+</p>
 
 <p>
 	Note that as currently implemented, this palette tool only creates tints and shades, it doesn't
@@ -233,5 +228,11 @@
 	ol li {
 		margin-bottom: var(--typography-spacing-vertical);
 		padding-left: 1em;
+	}
+
+	h1,
+	h2 {
+		text-decoration: underline;
+		text-underline-offset: 0.5em;
 	}
 </style>

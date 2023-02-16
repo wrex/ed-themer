@@ -2,6 +2,9 @@
 	import { colorScheme, swatches, modal } from '$lib/stores';
 	import { randomColor, complClr, anlgClr, triadicClr, tetradicClr } from '$lib/colorUtils';
 
+	/* Last color row used for algorithmic additions */
+	$: lastColor = $swatches[$swatches.length - 1].clr;
+
 	/**
 	 * addSwatches - add additional swatches to array
 	 * @param {string[]} colors - colors to add
@@ -47,12 +50,25 @@
 <div class="left-controls">
 	<div class="addrows">
 		<select bind:value={$colorScheme}>
-			<option value="custom">Custom (+1)</option>
-			<option value="complementary">Complementary (+1)</option>
-			<option value="analogous">Analogous (+2)</option>
-			<option value="triadic">Triadic (+2)</option>
-			<option value="tetradic">Tetradic (+3)</option>
+			<option value="custom">Custom</option>
+			<option value="complementary">Complementary</option>
+			<option value="analogous">Analogous</option>
+			<option value="triadic">Triadic</option>
+			<option value="tetradic">Tetradic</option>
 		</select>
-		<button on:click={addRow}>Add Swatches</button>
+		{#if $colorScheme === 'custom' || $colorScheme === 'complementary'}
+			<button on:click={addRow}>Add hue</button>
+		{:else if $colorScheme === 'analogous' || $colorScheme === 'triadic'}
+			<button on:click={addRow}>Add 2 hues</button>
+		{:else if $colorScheme === 'tetradic'}
+			<button on:click={addRow}>Add 3 hues</button>
+		{/if}
 	</div>
 </div>
+
+<style>
+	select,
+	button {
+		font-size: small;
+	}
+</style>
