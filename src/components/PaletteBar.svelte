@@ -24,21 +24,21 @@
 </script>
 
 <div class="swatchbar" style={customProps}>
-	<div class="swatch t91" />
-	<div class="swatch t78" />
-	<div class="swatch t65" />
-	<div class="swatch t52" />
-	<div class="swatch t39" />
-	<div class="swatch t26" />
-	<div class="swatch t13" />
+	<div class="swatch tint t91">0</div>
+	<div class="swatch tint t78">1</div>
+	<div class="swatch tint t65">2</div>
+	<div class="swatch tint t52">3</div>
+	<div class="swatch tint t39">4</div>
+	<div class="swatch tint t26">5</div>
+	<div class="swatch tint t13">6</div>
 	<input type="color" name={id} {id} bind:value={baseClr} />
-	<div class="swatch s13" />
-	<div class="swatch s26" />
-	<div class="swatch s39" />
-	<div class="swatch s52" />
-	<div class="swatch s65" />
-	<div class="swatch s78" />
-	<div class="swatch s91" />
+	<div class="swatch shade s13">8</div>
+	<div class="swatch shade s26">9</div>
+	<div class="swatch shade s39">10</div>
+	<div class="swatch shade s52">11</div>
+	<div class="swatch shade s65">12</div>
+	<div class="swatch shade s78">13</div>
+	<div class="swatch shade s91">14</div>
 </div>
 
 <style>
@@ -57,6 +57,18 @@
 		border: 1px solid var(--baseClr);
 		height: 50px;
 		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: x-small;
+	}
+
+	.tint {
+		color: #000;
+	}
+
+	.shade {
+		color: #fff;
 	}
 
 	.t13 {
