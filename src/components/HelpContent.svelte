@@ -6,31 +6,63 @@
 
 <h1>WK Elementary Dark Themer</h1>
 
-<blockquote>
-	Click the close icon at the top or the "OK" button at the end to close this dialog.
-	<mark> You may have to scroll to see these! </mark>
-</blockquote>
-
 <p>
 	This app lets you create a set of "CSS custom properties" to override the default color scheme of
 	the Elementary Dark stylesheet for <a href="https://www.wanikani.com">WaniKani.com</a>.
 </p>
+
+<div class="notice">
+	<header>Note</header>
+	<p>To close this dialog, click the "x" icon at the top, or the "OK" button at the end.</p>
+	<p>
+		<mark> You may have to scroll to see these! </mark>
+	</p>
+</div>
+
+<h2>Installation</h2>
+<ol>
+	<li>
+		First install <a href="https://github.com/openstyles/stylus">Stylus</a> or something similar to manage
+		custom stylesheets.
+	</li>
+	<li>
+		Next, install the <a
+			href="https://raw.githubusercontent.com/Sepitus-exe/WKElementaryDark/main/WKElementaryDark.css"
+			>WaniKani Elementary Dark Stylsheet</a
+		> to override the default WaniKani styling/colors.
+	</li>
+	<li>
+		Then use this app to choose your desired color scheme. Click the export icon in the top menu
+		bar, then copy the resultant CSS rule into your clipboard.
+	</li>
+	<li>
+		Finally, use <a href="https://github.com/openstyles/stylus">Stylus</a> or whatever to create a new
+		stylesheet, and paste in the contents of your clipboard. You probably only want the stylesheet to
+		apply to pages in the wanikani.com domain, but it's unlikely to hurt anything if it runs everywhere.
+	</li>
+</ol>
+
 <h2>Top navigation</h2>
-<p>The dropdown widget changes which mockup to display (surfaces, dashboard, or reviews).</p>
+<p>The dropdown selector changes which mockup to display (surfaces, dashboard, or reviews).</p>
+
+<button class="iconButton">
+	<CollapseLeftIcon />
+</button>
+<p>This button collapses the left panel to give you more screen real estate.</p>
+
+<button class="iconButton">
+	<ReloadIcon />
+</button>
 <p>
-	<span class="iconButton" role="button">
-		<CollapseLeftIcon />
-	</span> shrinks the left panel to give you more screen real estate.
+	resets all of the user styles on the left to the defaults. Note that this does <em>not</em> remove
+	or reset any of your palette swatches.
 </p>
+
+<button class="iconButton">
+	<ExportIcon />
+</button>
 <p>
-	<span class="iconButton" role="button">
-		<ReloadIcon />
-	</span> resets all of the user styles on the left to the defaults.
-</p>
-<p>
-	<span class="iconButton" role="button">
-		<ExportIcon />
-	</span> displays all of the current user style settings, and allows you to copy them to your clipboard.
+	displays all of the current user style settings, and allows you to copy them to your clipboard.
 </p>
 
 <h2>Central mockups</h2>
@@ -120,8 +152,7 @@
 </p>
 
 <p>
-	<span role="button" class="iconButton">-</span> removes any given row of swatches. (The top row cannot
-	be removed).
+	<button class="iconButton">-</button> removes any given row of swatches. (The top row cannot be removed).
 </p>
 
 <p>
@@ -132,36 +163,75 @@
 <h3>Palette controls</h3>
 
 <p>
-	<span role="button" class="iconButton">Palette</span> exports the palette of all palette swatches to
-	your clipboard if you'd like to use them elsewhere. Note that using the eyedropper tool to select one
-	of these swatches unfortunately just sets the hex color value for that user property, and doesn't reference
-	this palette property in the generated CSS.
+	<button class="iconButton">Palette</button> exports the palette of all palette swatches to your clipboard
+	if you'd like to use them elsewhere. Note that using the eyedropper tool to select one of these swatches
+	unfortunately just sets the hex color value for that user property, and doesn't reference this palette
+	property in the generated CSS.
 </p>
 
 <p>
-	<span role="button" class="iconButton">+</span> adds rows of swatches (up to a maximum of 20 rows).
+	<button class="iconButton">+</button> adds at least one row of swatches (up to a maximum of twenty
+	rows). Each row contains seven tints and seven shades on either side of the central color picker.
 </p>
 
 <p>The dropdown controls how many rows are created and the initial colors for those rows:</p>
 
-<ul>
-	<li>"Custom (+1)" creates a single row with a random initial color.</li>
-	<li>
-		"Complementary (+1)" also creates a single row, but chooses a hue that is the complement (180°
-		opposite on the color wheel) of the center color of the current bottom row.
-	</li>
-	<li>
-		"Analagous (+2)" generates two more rows, each hue 30° away (but adjacent to) the bottom color's
-		hue.
-	</li>
-	<li>
-		"Triadic (+2)" also generates two more rows, but these are each 120° away. This tends to
-		generate a very balanced color scheme.
-	</li>
-	<li>"Tetradic (+3)" generated three more rows, each 90° away.</li>
-</ul>
+<dl>
+	<dt>Custom (+1)</dt>
+	<dd>Creates a single row with a random initial color.</dd>
+
+	<dt>Complementary (+1)</dt>
+	<dd>
+		Also creates a single row, but chooses a hue that is the complement (180° opposite on the color
+		wheel) of the center color of the current bottom row.
+	</dd>
+
+	<dt>Analagous (+2)</dt>
+	<dd>Generates two more rows, each hue 30° away ("adjacent" to) the bottom color's hue.</dd>
+
+	<dt>Triadic (+2)</dt>
+	<dd>
+		Generates two more rows, each 120° away from the bottom hue. This tends to generate a very
+		balanced color scheme.
+	</dd>
+
+	<dt>Tetradic (+3)</dt>
+	<dd>Generates three more rows, each 90° away from each other.</dd>
+</dl>
 
 <p>
 	Note that as currently implemented, this palette tool only creates tints and shades, it doesn't
 	create any "tones" (mixing middle gray rather than pure black or pure white).
 </p>
+
+<style>
+	.notice {
+		outline: 1px solid gray;
+		padding: 1em;
+	}
+
+	.notice header {
+		text-transform: uppercase;
+		font-weight: bold;
+		margin-bottom: var(--typography-spacing-vertical);
+	}
+	button {
+		clear: both;
+		float: left;
+		width: auto;
+		margin: 0 0.5em 0 0;
+	}
+
+	dt {
+		font-weight: bold;
+	}
+	dd {
+		margin-top: 0.5em;
+		margin-bottom: var(--typography-spacing-vertical);
+	}
+
+	ol li {
+		margin-bottom: var(--typography-spacing-vertical);
+		padding-left: 1em;
+	}
+</style>

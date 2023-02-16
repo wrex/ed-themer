@@ -47,13 +47,13 @@
 #paletteTools {
 	grid-area: paletteTools;
 	border-top: 1px solid white;
-	border-right: 1px dashed gray;
+	/* border-right: 1px dashed gray; */
 	padding-block: 1rem;
 }
 
 #palette {
 	grid-area: palette;
-	overflow: scroll;
+	overflow-y: scroll;
 	border-top: 1px solid white;
 	max-height: 280px;
 	min-height: 180px;
