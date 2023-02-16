@@ -1,28 +1,27 @@
 <script>
 	import PaletteBar from './PaletteBar.svelte';
-	import { swatches } from '$lib/stores';
-	import PaletteTools from './PaletteTools.svelte';
+	import { newUserProps } from '$lib/stores';
 
 	/**
 	 * delRow - used by "-" button to delete a swatch row
 	 * @param {number} index
 	 */
 	const delRow = (index) => {
-		let copy = [...$swatches];
+		let copy = [...$newUserProps.palette];
 		copy.splice(index, 1); // modifies in place
-		// Must assign to swatches this way to ensure reactivity
-		$swatches = [...copy];
+		// Must assign to palette this way to ensure reactivity
+		$newUserProps.palette = [...copy];
 	};
 </script>
 
 <div class="palette">
 	<div class="swatchbars">
-		{#each $swatches as swatch, i}
+		{#each $newUserProps.palette as row, i}
 			<div class="grid">
 				<div class="bar">
-					<PaletteBar id={swatch.label} bind:baseClr={swatch.clr} />
+					<PaletteBar id={row.label} bind:baseClr={row.rgb} />
 				</div>
-				<input type="text" bind:value={swatch.label} />
+				<input type="text" bind:value={row.label} />
 				<button on:click={() => delRow(i)} disabled={i === 0}>-</button>
 			</div>
 		{/each}

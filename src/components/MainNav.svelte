@@ -6,7 +6,7 @@
 		expandControls,
 		modal,
 		userCSS,
-		swatches
+		makeTints
 	} from '$lib/stores.js';
 	import ExportIcon from '../icons/ExportIcon.svelte';
 	import ReloadIcon from '../icons/ReloadIcon.svelte';
@@ -30,39 +30,13 @@
 		$expandControls = !$expandControls;
 	};
 
-	/**
-	 * genPaletteCSS - generate custom props for Palette
-	 * @param {{clr: string, label: string}[]} swatches
-	 */
-	const genPaletteCSS = (swatches) => {
-		/**
-		 * swatchCSS - props for tints and shades of one color
-		 * @param {string} clr
-		 * @param {string} label
-		 */
-		const swatchCss = (clr, label) => {
-			/* brightest tint to darkest shade */
-			return `
-  --${slugify(label)}-0: ${tint(clr, 0.91)}
-  --${slugify(label)}-1: ${tint(clr, 0.78)}
-  --${slugify(label)}-2: ${tint(clr, 0.65)}
-  --${slugify(label)}-3: ${tint(clr, 0.52)}
-  --${slugify(label)}-4: ${tint(clr, 0.39)}
-  --${slugify(label)}-5: ${tint(clr, 0.26)}
-  --${slugify(label)}-6: ${tint(clr, 0.13)}
-  --${slugify(label)}-7: ${clr}
-  --${slugify(label)}-8: ${shade(clr, 0.13)}
-  --${slugify(label)}-9: ${shade(clr, 0.26)}
-  --${slugify(label)}-10: ${shade(clr, 0.39)}
-  --${slugify(label)}-11: ${shade(clr, 0.52)}
-  --${slugify(label)}-12: ${shade(clr, 0.65)}
-  --${slugify(label)}-13: ${shade(clr, 0.78)}
-  --${slugify(label)}-14: ${shade(clr, 0.91)}
-`;
-		};
+	const genPaletteCSS = () => {
 		let CSS = '';
-		swatches.forEach((swatch) => {
-			CSS += swatchCss(swatch.clr, swatch.label);
+		$newUserProps.palette.forEach(({ label, rgb, prop }) => {
+			const tints = makeTints(rgb);
+			Object.keys(tints).forEach((suffix) => {
+				CSS += `  --${label}${suffix}: ${tints[suffix]};\r\n`;
+			});
 		});
 		return CSS;
 	};
@@ -76,7 +50,7 @@
 			const thisEntry = `--USER-${name}`;
 			const refVal = $newUserProps.user[thisEntry].ref;
 			const clrVal = $newUserProps.user[thisEntry].clr;
-			if (refVal === 'Custom') {
+			if (refVal === 'custom') {
 				CSS += `  ${thisEntry}: ${clrVal}; \r\n`;
 			} else {
 				CSS += `  ${thisEntry}: var(${refVal}); \r\n`;
@@ -86,7 +60,7 @@
 	};
 
 	const toggleStylesheet = () => {
-		$userCSS = genUserCSS() + `\r\n  /* palette colors */\r\n` + genPaletteCSS($swatches);
+		$userCSS = genUserCSS() + `\r\n  /* palette colors */\r\n` + genPaletteCSS();
 		$modal.userStyles = !$modal.userStyles;
 	};
 </script>

@@ -82,14 +82,6 @@ newDefaultProps.user = {
 
 export const newUserProps = writable(JSON.parse(JSON.stringify(newDefaultProps)));
 
-/* Initialize swatches with grays and tints/shades of one random color */
-const defaultSwatches = [
-	{ clr: '#333333', label: 'gray' },
-	{ clr: randomColor(), label: 'swatch1' }
-];
-
-export const swatches = writable(JSON.parse(JSON.stringify(defaultSwatches)));
-
 /**
  * @type Function[];
  */
@@ -100,7 +92,6 @@ export const resetProps = () => {
 		callback();
 	});
 	newUserProps.set(JSON.parse(JSON.stringify(newDefaultProps)));
-	swatches.set(JSON.parse(JSON.stringify(defaultSwatches)));
 };
 
 export const sample = writable('surfaces');

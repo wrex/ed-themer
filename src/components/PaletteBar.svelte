@@ -3,42 +3,45 @@
 	export let baseClr = '#888888';
 
 	import { tint, shade } from '$lib/colorUtils';
+	import { makeTints } from '$lib/stores';
+
+	$: tints = makeTints(baseClr);
 
 	$: customProps = `
-  --baseClr: ${baseClr};
-  --t13: ${tint(baseClr, 0.13)};
-  --t26: ${tint(baseClr, 0.26)};
-  --t39: ${tint(baseClr, 0.39)};
-  --t52: ${tint(baseClr, 0.52)};
-  --t65: ${tint(baseClr, 0.65)};
-  --t78: ${tint(baseClr, 0.78)};
-  --t91: ${tint(baseClr, 0.91)};
-  --s13: ${shade(baseClr, 0.13)};
-  --s26: ${shade(baseClr, 0.26)};
-  --s39: ${shade(baseClr, 0.39)};
-  --s52: ${shade(baseClr, 0.52)};
-  --s65: ${shade(baseClr, 0.65)};
-  --s78: ${shade(baseClr, 0.78)};
-  --s91: ${shade(baseClr, 0.91)};
+  --swatch-0: ${tints['-0']};
+  --swatch-1: ${tints['-1']};
+  --swatch-2: ${tints['-2']};
+  --swatch-3: ${tints['-3']};
+  --swatch-4: ${tints['-4']};
+  --swatch-5: ${tints['-5']};
+  --swatch-6: ${tints['-6']};
+  --swatch-7: ${tints['-7']};
+  --swatch-8: ${tints['-8']};
+  --swatch-9: ${tints['-9']};
+  --swatch-10: ${tints['-10']};
+  --swatch-11: ${tints['-11']};
+  --swatch-12: ${tints['-12']};
+  --swatch-13: ${tints['-13']};
+  --swatch-14: ${tints['-14']};
   `;
 </script>
 
 <div class="swatchbar" style={customProps}>
-	<div class="swatch tint t91">0</div>
-	<div class="swatch tint t78">1</div>
-	<div class="swatch tint t65">2</div>
-	<div class="swatch tint t52">3</div>
-	<div class="swatch tint t39">4</div>
-	<div class="swatch tint t26">5</div>
-	<div class="swatch tint t13">6</div>
+	<div class="swatch tint swatch-0">0</div>
+	<div class="swatch tint swatch-1">1</div>
+	<div class="swatch tint swatch-2">2</div>
+	<div class="swatch tint swatch-3">3</div>
+	<div class="swatch tint swatch-4">4</div>
+	<div class="swatch tint swatch-5">5</div>
+	<div class="swatch tint swatch-6">6</div>
 	<input type="color" name={id} {id} bind:value={baseClr} />
-	<div class="swatch shade s13">8</div>
-	<div class="swatch shade s26">9</div>
-	<div class="swatch shade s39">10</div>
-	<div class="swatch shade s52">11</div>
-	<div class="swatch shade s65">12</div>
-	<div class="swatch shade s78">13</div>
-	<div class="swatch shade s91">14</div>
+	<div class="swatch shade swatch-8">8</div>
+	<div class="swatch shade swatch-9">9</div>
+	<div class="swatch shade swatch-10">10</div>
+	<div class="swatch shade swatch-11">11</div>
+	<div class="swatch shade swatch-12">12</div>
+	<div class="swatch shade swatch-13">13</div>
+	<div class="swatch shade swatch-14">14</div>
 </div>
 
 <style>
@@ -72,47 +75,59 @@
 		color: #fff;
 	}
 
-	.t13 {
-		background-color: var(--t13);
-	}
-	.t26 {
-		background-color: var(--t26);
-	}
-	.t39 {
-		background-color: var(--t39);
-	}
-	.t52 {
-		background-color: var(--t52);
-	}
-	.t65 {
-		background-color: var(--t65);
-	}
-	.t78 {
-		background-color: var(--t78);
-	}
-	.t91 {
-		background-color: var(--t91);
+	.swatch-0 {
+		background-color: var(--swatch-0);
 	}
 
-	.s13 {
-		background-color: var(--s13);
+	.swatch-1 {
+		background-color: var(--swatch-1);
 	}
-	.s26 {
-		background-color: var(--s26);
+
+	.swatch-2 {
+		background-color: var(--swatch-2);
 	}
-	.s39 {
-		background-color: var(--s39);
+
+	.swatch-3 {
+		background-color: var(--swatch-3);
 	}
-	.s52 {
-		background-color: var(--s52);
+
+	.swatch-4 {
+		background-color: var(--swatch-4);
 	}
-	.s65 {
-		background-color: var(--s65);
+
+	.swatch-5 {
+		background-color: var(--swatch-5);
 	}
-	.s78 {
-		background-color: var(--s78);
+
+	.swatch-6 {
+		background-color: var(--swatch-6);
 	}
-	.s91 {
-		background-color: var(--s91);
+
+	.swatch-8 {
+		background-color: var(--swatch-8);
+	}
+
+	.swatch-9 {
+		background-color: var(--swatch-9);
+	}
+
+	.swatch-10 {
+		background-color: var(--swatch-10);
+	}
+
+	.swatch-11 {
+		background-color: var(--swatch-11);
+	}
+
+	.swatch-12 {
+		background-color: var(--swatch-12);
+	}
+
+	.swatch-13 {
+		background-color: var(--swatch-13);
+	}
+
+	.swatch-14 {
+		background-color: var(--swatch-14);
 	}
 </style>
