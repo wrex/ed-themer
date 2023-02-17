@@ -10,9 +10,10 @@
 	/**  @type string; */
 	let userPropSelector;
 
-	/* If user reloads defaults, set select to "custom" */
+	/* If user reloads defaults, set selectors to "custom" */
 	resetCallbacks.push(() => {
 		userPropSelector = '';
+		palettePropSelector = '';
 	});
 
 	const pickerChange = () => {
@@ -80,13 +81,13 @@
 		bind:value={$userProps.user[`--USER-${id}`].clr}
 		on:change={pickerChange}
 	/>
-	<select bind:value={userPropSelector} on:change={userPropChange}>
+	<select required bind:value={userPropSelector} on:change={userPropChange}>
 		<option value="" disabled selected>User Prop</option>
 		{#each allPropNames.filter((name) => name !== id) as name}
 			<option>{name}</option>
 		{/each}
 	</select>
-	<select bind:value={palettePropSelector} on:change={palettePropChange}>
+	<select required bind:value={palettePropSelector} on:change={palettePropChange}>
 		<option value="" disabled selected>Palette Prop</option>
 		{#each paletteNames as name}
 			<option>{slugify(name)}</option>
