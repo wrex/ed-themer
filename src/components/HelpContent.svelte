@@ -104,8 +104,8 @@
 
 <h3>Color picker</h3>
 <p>
-	There are two ways to define the color for a given user property: using a color picker/mixer, or
-	by selecting any of the other user properties in a dropdown.
+	There are three ways to specify the color for a given user property: using a color picker/mixer,
+	selecting any of the other user property, or selecting any of the palette colors.
 </p>
 <p>
 	Click on the color swatch to adjust the desired color for that property. The sample in the center
@@ -114,24 +114,42 @@
 </p>
 
 <p>
-	Alternately, you can click the dropdown to reference any other user property. This will
-	automatically change the color displayed immediately above the dropdown. Once another property is
-	selected, this color will change as that other property is adjusted.
+	Alternately, you can click a dropdown selector to reference any other user property, or any color
+	swatch currently present in the palette section. This will automatically change the color
+	displayed immediately above the dropdown.
 </p>
 
 <p>
-	Note that using the color picker on top for any property will automatically revert the dropdown to
-	"Custom", and using the dropdown will automatically set the color picker to the current value of
-	the other property.
+	Note that using the color picker on top for any property will automatically revert the dropdown
+	selectors to their unselected states. Similarly, selecting a property from one of the selectors
+	will automatically set the color picker to the current value of the other property.
+</p>
+
+<p>
+	Note that <em>almost</em> everything is fully reactive. In particular, changing the custom color of
+	any user prop will also "live" update any other user properties on the left that are referencing that
+	property.
+</p>
+
+<p>
+	The only exception is with palette colors. Changing swatch names or central hue of any palette
+	row, will <em>not</em> "live" update anything above. Please define your palette before making changes
+	to the user properties on the left. Otherwise, you will have to reselect the palette properties that
+	changed. (The pulldown list of properties in each selector will always reflect the current state of
+	the palette.)
 </p>
 
 <h3>Eyedropper feature</h3>
 <p>
-	The color picker is controlled by your browser, but most (all?) modern browsers include an
-	"eyedropper" feature to pick up any other color on your screen. This is particularly handy if
-	you'd like to use a consistent palette of colors rather than manually mixing every custom color.
-	You can pick colors from the palette you create below, or from a photograph or anything else
-	currently displayed on your screen.
+	Note that the color picker provided by most (all?) modern browsers also include an "eyedropper"
+	feature to pick up any other color on your screen. Both the color pickers on the left user
+	properties panel, and the color picker for the central swatches in the palette below are provided
+	by your browser (features vary).
+</p>
+
+<p>
+	The eyedropper feature is particularly handy if you'd like to create a palette of colors from a
+	photograph or anything else currently displayed on your screen.
 </p>
 
 <h2>Color palette</h2>
