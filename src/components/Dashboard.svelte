@@ -52,10 +52,10 @@
 					<div class="progress-entry">
 						<div class="radical">宀</div>
 						<div class="pips">
-							<div class="pip brand">&nbsp;</div>
-							<div class="pip brand">&nbsp;</div>
-							<div class="pip brand">&nbsp;</div>
-							<div class="pip">&nbsp;</div>
+							<div class="pip progress">&nbsp;</div>
+							<div class="pip progress">&nbsp;</div>
+							<div class="pip progress">&nbsp;</div>
+							<div class="pip progress">&nbsp;</div>
 							<div class="pip">&nbsp;</div>
 						</div>
 					</div>
@@ -67,9 +67,19 @@
 					<div class="progress-entry">
 						<div class="kanji">字</div>
 						<div class="pips">
-							<div class="pip brand">&nbsp;</div>
-							<div class="pip brand">&nbsp;</div>
-							<div class="pip brand">&nbsp;</div>
+							<div class="pip progress">&nbsp;</div>
+							<div class="pip progress">&nbsp;</div>
+							<div class="pip progress">&nbsp;</div>
+							<div class="pip progress">&nbsp;</div>
+							<div class="pip">&nbsp;</div>
+						</div>
+					</div>
+					<div class="progress-entry">
+						<div class="kanji">字</div>
+						<div class="pips">
+							<div class="pip progress">&nbsp;</div>
+							<div class="pip progress">&nbsp;</div>
+							<div class="pip progress">&nbsp;</div>
 							<div class="pip">&nbsp;</div>
 							<div class="pip">&nbsp;</div>
 						</div>
@@ -77,9 +87,9 @@
 					<div class="progress-entry">
 						<div class="kanji">字</div>
 						<div class="pips">
-							<div class="pip brand">&nbsp;</div>
-							<div class="pip brand">&nbsp;</div>
-							<div class="pip brand">&nbsp;</div>
+							<div class="pip progress">&nbsp;</div>
+							<div class="pip">&nbsp;</div>
+							<div class="pip">&nbsp;</div>
 							<div class="pip">&nbsp;</div>
 							<div class="pip">&nbsp;</div>
 						</div>
@@ -87,19 +97,9 @@
 					<div class="progress-entry">
 						<div class="kanji">字</div>
 						<div class="pips">
-							<div class="pip brand">&nbsp;</div>
-							<div class="pip brand">&nbsp;</div>
-							<div class="pip brand">&nbsp;</div>
-							<div class="pip">&nbsp;</div>
-							<div class="pip">&nbsp;</div>
-						</div>
-					</div>
-					<div class="progress-entry">
-						<div class="kanji">字</div>
-						<div class="pips">
-							<div class="pip brand">&nbsp;</div>
-							<div class="pip brand">&nbsp;</div>
-							<div class="pip brand">&nbsp;</div>
+							<div class="pip progress">&nbsp;</div>
+							<div class="pip progress">&nbsp;</div>
+							<div class="pip progress">&nbsp;</div>
 							<div class="pip">&nbsp;</div>
 							<div class="pip">&nbsp;</div>
 						</div>
@@ -107,9 +107,9 @@
 					<div class="progress-entry">
 						<div class="locked">秘</div>
 						<div class="pips">
-							<div class="pip brand">&nbsp;</div>
-							<div class="pip brand">&nbsp;</div>
-							<div class="pip brand">&nbsp;</div>
+							<div class="pip">&nbsp;</div>
+							<div class="pip">&nbsp;</div>
+							<div class="pip ">&nbsp;</div>
 							<div class="pip">&nbsp;</div>
 							<div class="pip">&nbsp;</div>
 						</div>
@@ -663,6 +663,10 @@
 
 	.brand {
 		background-color: var(--USER-brand);
+	}
+
+	.progress {
+		background-color: var(--USER-progress);
 	}
 
 	.radical {
