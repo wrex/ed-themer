@@ -14,8 +14,8 @@
 	import ExpandRightIcon from '../icons/ExpandRightIcon.svelte';
 	import HelpContent from './HelpContent.svelte';
 	import Logo from './Logo.svelte';
-	import { allPropNames, slugify } from '$lib/utils';
-	import { tint, shade } from '$lib/colorUtils';
+	import { allPropNames } from '$lib/utils';
+	import { browser } from '$app/environment';
 
 	const toggleHelp = () => {
 		$modal.help = !$modal.help;
@@ -29,6 +29,13 @@
 	const toggleSidebar = () => {
 		$expandControls = !$expandControls;
 	};
+
+	const minWidth = 912;
+	const minHeight = 600;
+	let width = minWidth;
+	let height = minHeight;
+
+	$: $modal.minScreen = width < minWidth || height < minHeight ? true : false;
 
 	const genPaletteCSS = () => {
 		let CSS = '';
@@ -64,6 +71,8 @@
 		$modal.userStyles = !$modal.userStyles;
 	};
 </script>
+
+<svelte:window bind:innerWidth={width} bind:innerHeight={height} />
 
 <nav>
 	<ul>
@@ -125,5 +134,17 @@
 		<footer>
 			<button data-target="helpfile" on:click={toggleHelp}>OK</button>
 		</footer>
+	</article>
+</dialog>
+
+<!-- Small screen modal -->
+<dialog open={$modal.minScreen || null} id="minscreen">
+	<article>
+		<header>Screen too small</header>
+		<p>
+			This <em>desktop</em> app requires at least {minWidth}x{minHeight} viewport resolution to render
+			correctly.
+		</p>
+		<p>Please adjust your browser window size and refresh the page.</p>
 	</article>
 </dialog>
