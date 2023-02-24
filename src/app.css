@@ -81,6 +81,6 @@
 }
 
 .textBox {
-	max-height: 50vh;
+	max-height: 35vh;
 	overflow-y: scroll;
 }

@@ -101,7 +101,8 @@ export const expandControls = writable(true);
 export const modal = writable({
 	userStyles: false,
 	paletteStyles: false,
-	help: false
+	help: false,
+	minScreen: false
 });
 
 export const userCSS = writable('');
