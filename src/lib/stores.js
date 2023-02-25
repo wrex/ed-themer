@@ -1,5 +1,6 @@
-import { writable, get } from 'svelte/store';
+import { writable } from 'svelte/store';
 import { randomColor, tint, shade } from './colorUtils';
+import { browser } from '$app/environment';
 
 /**
  * @typedef {{clr: string, ref: string}} UserClrDefn
@@ -80,7 +81,22 @@ defaultProps.user = {
 	});
 });
 
-export const userProps = writable(JSON.parse(JSON.stringify(defaultProps)));
+/**
+ * @type {string}
+ */
+let storedProps;
+if (browser) {
+	storedProps = localStorage.getItem('wkedProps') || JSON.stringify(defaultProps);
+} else {
+	storedProps = JSON.stringify(defaultProps);
+}
+
+export const userProps = writable(JSON.parse(storedProps));
+if (browser) {
+	userProps.subscribe((value) => {
+		localStorage.setItem('wkedProps', JSON.stringify(value));
+	});
+}
 
 /**
  * @type Function[];

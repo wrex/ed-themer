@@ -7,7 +7,7 @@
 		modal,
 		userCSS,
 		makeTints
-	} from '$lib/stores.js';
+	} from '$lib/stores';
 	import ExportIcon from '../icons/ExportIcon.svelte';
 	import ReloadIcon from '../icons/ReloadIcon.svelte';
 	import CollapseLeftIcon from '../icons/CollapseLeftIcon.svelte';
