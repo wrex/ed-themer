@@ -2,7 +2,6 @@
 	export let id = 'grays';
 	export let baseClr = '#888888';
 
-	import { tint, shade } from '$lib/colorUtils';
 	import { makeTints } from '$lib/stores';
 
 	$: tints = makeTints(baseClr);
