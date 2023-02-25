@@ -1,7 +1,8 @@
 <script>
 	import CollapseLeftIcon from '../icons/CollapseLeftIcon.svelte';
 	import ReloadIcon from '../icons/ReloadIcon.svelte';
-	import ExportIcon from '../icons/ExportIcon.svelte';
+	import InBoxIcon from '../icons/InBoxIcon.svelte';
+	import OutBoxIcon from '../icons/OutBoxIcon.svelte';
 </script>
 
 <h1>WK Elementary Dark Themer</h1>
@@ -66,10 +67,31 @@
 </p>
 
 <button class="iconButton">
-	<ExportIcon />
+	<InBoxIcon />
 </button>
 <p>
-	displays all of the current user style settings, and allows you to copy them to your clipboard.
+	<em>Imports</em> custom property definitions. You can either type in or, better, paste in the custom
+	property declarations you wish to load. The format is identical to the export format (see the following
+	section).
+</p>
+<p>
+	Only one custom property definition is allowed per line, and only lines containing an rgb color
+	definition (a '#' character followed by three or 6 hexadecimal digits) will be imported. All other
+	lines are ignored.
+</p>
+<p>
+	Basically, the data format expects you to import data that was previously exported in another
+	session (possibly something you saved externally yourself, or received from another user). Palette
+	color declrations not ending "-7" are ignored ("-7" means the the center swatch color). The
+	remaing 7 tints and 7 shades are always re-generated automatically.
+</p>
+
+<button class="iconButton">
+	<OutBoxIcon />
+</button>
+<p>
+	Exports all of the current settings as a single CSS rule with several custom property
+	declarations, and allows you to copy the rule to your clipboard.
 </p>
 
 <h2>Central mockups</h2>
