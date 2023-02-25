@@ -14,11 +14,15 @@
 	import ExpandRightIcon from '../icons/ExpandRightIcon.svelte';
 	import HelpContent from './HelpContent.svelte';
 	import Logo from './Logo.svelte';
-	import { allPropNames } from '$lib/utils';
-	import { browser } from '$app/environment';
+	import { allPropNames, slugify } from '$lib/utils';
 
 	const toggleHelp = () => {
 		$modal.help = !$modal.help;
+	};
+
+	const toggleStylesheet = () => {
+		$userCSS = genUserCSS() + `\r\n  /* palette colors */\r\n` + genPaletteCSS();
+		$modal.userStyles = !$modal.userStyles;
 	};
 
 	const userToClipboard = () => {
@@ -52,7 +56,7 @@
 	 * genUserCSS - generate custom props for each USER property
 	 */
 	const genUserCSS = () => {
-		let CSS = '';
+		let CSS = `  --USER-theme: "${$userProps.name}";\r\n`;
 		allPropNames.forEach((name) => {
 			const thisEntry = `--USER-${name}`;
 			const refVal = $userProps.user[thisEntry].ref;
@@ -64,11 +68,6 @@
 			}
 		});
 		return CSS;
-	};
-
-	const toggleStylesheet = () => {
-		$userCSS = genUserCSS() + `\r\n  /* palette colors */\r\n` + genPaletteCSS();
-		$modal.userStyles = !$modal.userStyles;
 	};
 </script>
 

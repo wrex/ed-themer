@@ -36,9 +36,9 @@ export const makeTints = (clr) => {
 };
 
 /**
- * @type {{user: UserPropDefn, palette: PaletteEntry[]}}
+ * @type {{name: string; user: UserPropDefn, palette: PaletteEntry[]}}
  */
-let defaultProps = { user: {}, palette: [] };
+let defaultProps = { name: 'default', user: {}, palette: [] };
 defaultProps.user = {
 	'--USER-surface-1': { clr: '#151515', ref: 'custom' },
 	'--USER-surface-2': { clr: '#282828', ref: 'custom' },

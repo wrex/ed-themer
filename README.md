@@ -7,8 +7,6 @@ Dark](https://github.com/Sepitus-exe/WKElementaryDark) project.
 
 - refactor to clean up the code
 
-- persist user and palette props
-
 - Let users reorder palette bar rows (drag and drop).
 
 - Let users select which input to use as the basis for adding rows (unnecessary
