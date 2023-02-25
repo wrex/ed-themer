@@ -118,7 +118,8 @@ export const modal = writable({
 	userStyles: false,
 	paletteStyles: false,
 	help: false,
-	minScreen: false
+	minScreen: false,
+	importStyles: false
 });
 
 export const userCSS = writable('');

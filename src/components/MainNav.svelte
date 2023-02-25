@@ -8,26 +8,66 @@
 		userCSS,
 		makeTints
 	} from '$lib/stores';
-	import ExportIcon from '../icons/ExportIcon.svelte';
+	import OutBoxIcon from '../icons/OutBoxIcon.svelte';
+	import InBoxIcon from '../icons/InBoxIcon.svelte';
 	import ReloadIcon from '../icons/ReloadIcon.svelte';
 	import CollapseLeftIcon from '../icons/CollapseLeftIcon.svelte';
 	import ExpandRightIcon from '../icons/ExpandRightIcon.svelte';
 	import HelpContent from './HelpContent.svelte';
 	import Logo from './Logo.svelte';
-	import { allPropNames, slugify } from '$lib/utils';
+	import { allPropNames } from '$lib/utils';
 
 	const toggleHelp = () => {
 		$modal.help = !$modal.help;
 	};
 
-	const toggleStylesheet = () => {
+	let importText = '';
+	const toggleImport = () => {
+		$modal.importStyles = !$modal.importStyles;
+	};
+
+	const importProperties = () => {
+		const lines = importText.split('\n');
+		lines.forEach((line) => {
+			let matched;
+			if ((matched = line.match(/--USER-theme[^\s:]*:\s*"([^"]+)/i))) {
+				$userProps.name = matched[1];
+			} else if ((matched = line.match(/(--USER-[^\s:]+):\s*(#[a-z0-9]+)/i))) {
+				$userProps.user[matched[1]].clr = matched[2];
+				$userProps.user[matched[1]].ref = 'custom';
+			} else if ((matched = line.match(/--([^\s:]+)-7\s*:\s*(#[a-z0-9]+)/i))) {
+				const label = matched[1];
+				const rgb = matched[2];
+				const index = $userProps.palette.findIndex((elm) => elm.label === label);
+				if (index !== -1) {
+					// found
+					$userProps.palette[index].rgb = rgb;
+					$userProps.palette[index].props = makeTints(rgb);
+				} else {
+					// new color
+					$userProps.palette.push({
+						label: label,
+						rgb: rgb,
+						props: makeTints(rgb)
+					});
+				}
+			}
+			if (matched && $userProps.name === 'default') {
+				// disallow name of "default" if anything imported
+				$userProps.name = 'unnamed';
+			}
+		});
+		toggleImport();
+	};
+
+	const toggleExport = () => {
 		$userCSS = genUserCSS() + `\r\n  /* palette colors */\r\n` + genPaletteCSS();
 		$modal.userStyles = !$modal.userStyles;
 	};
 
 	const userToClipboard = () => {
-		navigator.clipboard.writeText($userCSS);
-		toggleStylesheet();
+		navigator.clipboard.writeText(':root {\r\n' + $userCSS + '}');
+		toggleExport();
 	};
 
 	const toggleSidebar = () => {
@@ -99,26 +139,40 @@
 			</li>
 		{/if}
 		<li><button class="iconButton" on:click={resetProps}><ReloadIcon /></button></li>
-		<li><button class="iconButton" on:click={toggleStylesheet}><ExportIcon /></button></li>
+		<li><button class="iconButton" on:click={toggleImport}><InBoxIcon /></button></li>
+		<li><button class="iconButton" on:click={toggleExport}><OutBoxIcon /></button></li>
 		<li><button class="iconButton" on:click={toggleHelp}>?</button></li>
 	</ul>
 </nav>
 
-<!-- Stylesheet modal -->
-<dialog open={$modal.userStyles || null} id="stylesheet">
+<!-- Export modal -->
+<dialog open={$modal.userStyles || null} id="export">
 	<article>
-		<a
-			href="#close"
-			aria-label="Close"
-			class="close"
-			data-target="stylesheet"
-			on:click={toggleStylesheet}>&nbsp</a
+		<a href="#close" aria-label="Close" class="close" data-target="export" on:click={toggleExport}
+			>&nbsp</a
 		>
-		<h1>Custom Properties</h1>
+		<h2>Export Properties</h2>
 		<!-- prettier-ignore -->
 		<pre class="textBox">{`:root {\r\n${$userCSS}}`}</pre>
 		<footer>
-			<button data-target="stylesheet" on:click={userToClipboard}> Copy to Clipboard </button>
+			<button data-target="export" on:click={userToClipboard}> Copy to Clipboard </button>
+		</footer>
+	</article>
+</dialog>
+
+<!-- Import modal -->
+<dialog open={$modal.importStyles || null} id="import">
+	<article>
+		<a href="#close" aria-label="Close" class="close" data-target="import" on:click={toggleImport}
+			>&nbsp</a
+		>
+		<h2>Import properties</h2>
+		<textarea
+			placeholder="Enter (or paste) one CSS custom property declaration per line"
+			bind:value={importText}
+		/>
+		<footer>
+			<button data-target="import" on:click={importProperties}>Import</button>
 		</footer>
 	</article>
 </dialog>
@@ -147,3 +201,11 @@
 		<p>Please adjust your browser window size and refresh the page.</p>
 	</article>
 </dialog>
+
+<style>
+	#import textarea {
+		font-size: small;
+		min-height: 35vh;
+		min-width: 15em;
+	}
+</style>
