@@ -5,7 +5,7 @@
 	export let id;
 
 	import { allPropNames, slugify } from '$lib/utils';
-	import { userProps, resetCallbacks } from '$lib/stores';
+	import { userProps, resetCallbacks, makeTints } from '$lib/stores';
 
 	/**  @type string; */
 	let userPropSelector;
@@ -21,6 +21,10 @@
 		palettePropSelector = '';
 		let thisPropName = `--USER-${id}`;
 		let thisColor = $userProps.user[thisPropName].clr;
+		if ($userProps.name === 'default') {
+			// changes without a custom name
+			$userProps.name = 'unnamed';
+		}
 
 		$userProps.user[thisPropName].ref = 'custom';
 
@@ -37,6 +41,10 @@
 		$userProps.user[`--USER-${id}`].clr = $userProps.user[`--USER-${userPropSelector}`].clr;
 		$userProps.user[`--USER-${id}`].ref = `--USER-${userPropSelector}`;
 		palettePropSelector = '';
+		if ($userProps.name === 'default') {
+			// changes without a custom name
+			$userProps.name = 'unnamed';
+		}
 	};
 
 	/**  @type string; */
@@ -66,9 +74,15 @@
 			(palette) => palette.label === label
 		);
 
-		$userProps.user[`--USER-${id}`].clr = found.rgb;
+		const tints = makeTints(found.rgb);
+
+		$userProps.user[`--USER-${id}`].clr = tints[suffix];
 		$userProps.user[`--USER-${id}`].ref = `--${label}${suffix}`;
 		userPropSelector = '';
+		if ($userProps.name === 'default') {
+			// changes without a custom name
+			$userProps.name = 'unnamed';
+		}
 	};
 </script>
 

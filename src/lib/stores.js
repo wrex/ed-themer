@@ -1,5 +1,6 @@
-import { writable, get } from 'svelte/store';
+import { writable } from 'svelte/store';
 import { randomColor, tint, shade } from './colorUtils';
+import { browser } from '$app/environment';
 
 /**
  * @typedef {{clr: string, ref: string}} UserClrDefn
@@ -35,9 +36,9 @@ export const makeTints = (clr) => {
 };
 
 /**
- * @type {{user: UserPropDefn, palette: PaletteEntry[]}}
+ * @type {{name: string; user: UserPropDefn, palette: PaletteEntry[]}}
  */
-let defaultProps = { user: {}, palette: [] };
+let defaultProps = { name: 'default', user: {}, palette: [] };
 defaultProps.user = {
 	'--USER-surface-1': { clr: '#151515', ref: 'custom' },
 	'--USER-surface-2': { clr: '#282828', ref: 'custom' },
@@ -80,7 +81,22 @@ defaultProps.user = {
 	});
 });
 
-export const userProps = writable(JSON.parse(JSON.stringify(defaultProps)));
+/**
+ * @type {string}
+ */
+let storedProps;
+if (browser) {
+	storedProps = localStorage.getItem('wkedProps') || JSON.stringify(defaultProps);
+} else {
+	storedProps = JSON.stringify(defaultProps);
+}
+
+export const userProps = writable(JSON.parse(storedProps));
+if (browser) {
+	userProps.subscribe((value) => {
+		localStorage.setItem('wkedProps', JSON.stringify(value));
+	});
+}
 
 /**
  * @type Function[];
@@ -102,7 +118,8 @@ export const modal = writable({
 	userStyles: false,
 	paletteStyles: false,
 	help: false,
-	minScreen: false
+	minScreen: false,
+	importStyles: false
 });
 
 export const userCSS = writable('');

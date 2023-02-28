@@ -43,7 +43,7 @@
 	max-width: var(--props-max-width);
 }
 
-#user-colors label {
+#user-colors article label {
 	font-size: small;
 	text-align: center;
 	line-height: 1.5;

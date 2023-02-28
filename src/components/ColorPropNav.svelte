@@ -9,12 +9,20 @@
 		srsNames,
 		reviewNames
 	} from '$lib/utils';
-	import { expandControls } from '$lib/stores';
+	import { expandControls, userProps } from '$lib/stores';
 </script>
 
 <div id="user-colors">
 	{#if $expandControls}
-		<h3>Properties</h3>
+		<label for="theme" class="themeName">Theme name</label>
+		<input
+			type="text"
+			id="theme"
+			name="theme"
+			placeholder="Enter name"
+			bind:value={$userProps.name}
+			required
+		/>
 
 		<details>
 			<summary>Surfaces</summary>
@@ -59,3 +67,12 @@
 		</details>
 	{/if}
 </div>
+
+<style>
+	.themeName {
+		font-size: smaller;
+	}
+	input[type='text'] {
+		margin-bottom: 3em;
+	}
+</style>
